@@ -1,0 +1,16 @@
+{
+    "name": "@svelte-compose/ast-manipulation",
+    "version": "1.1.2",
+    "license": "MIT",
+    "type": "module",
+    "exports": "./build/index.js",
+    "dependencies": {
+        "@svelte-compose/ast-tooling": "workspace:^"
+    },
+    "bugs": "https://github.com/svelte-compose/svelte-compose/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/svelte-compose/svelte-compose/tree/main/projects/ast-manipulation"
+    },
+    "keywords": []
+}

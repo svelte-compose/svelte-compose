@@ -1,0 +1,8 @@
+node_modules/
+.pnpm-store/
+build/
+.npmrc
+projects/tests/.outputs
+temp/
+coverage/
+.rollup.cache

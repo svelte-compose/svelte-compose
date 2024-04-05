@@ -1,0 +1,24 @@
+{
+  "name": "@svelte-compose/cli",
+  "version": "1.0.2",
+  "bin": "build/index.js",
+  "type": "module",
+  "exports": {
+    "./website": {
+      "import": "./build/website.js"
+    }
+  },
+  "dependencies": {
+    "@svelte-compose/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "@svelte-compose/bootstrap": "workspace:^",
+    "@svelte-compose/bulma": "workspace:^",
+    "@svelte-compose/mdsvex": "workspace:^",
+    "@svelte-compose/routify": "workspace:^",
+    "@svelte-compose/tailwindcss": "workspace:^"
+  },
+  "devDependencies": {
+    "commander": "^12.0.0"
+  }
+}

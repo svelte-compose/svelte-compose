@@ -1,0 +1,40 @@
+
+<p style="text-align: center;">
+    <img src="./tailwindcss.svg" height="50" />
+</p>
+
+# TailwindCSS
+
+> This is a composer for [svelte-compose](https://svelte-compose.com) and is used to add TailwindCSS to your svelte/kit project.
+
+You can find all options for this composer on [this site](https://svelte-compose.com/composer/tailwindcss). We will only provide a short breakdown of the composer features here.
+
+Basic usage
+```sh
+npx @svelte-compose/tailwindcss@latest
+```
+
+In case you already have a directory in mind, you can use this:
+```sh
+npx @svelte-compose/tailwindcss@latest --path ./your-project
+```
+
+
+## Available options
+
+    
+- `typography` (default: false) - Do you want to use typography plugin?
+
+
+Option syntax
+```sh
+npx @svelte-compose/tailwindcss@latest --key value
+```
+
+Specific example
+```sh
+npx @svelte-compose/tailwindcss@latest --typography false
+```
+
+You can combine as many options as you want. The usage of options is optional. If you don't specify an option value via the command line, the CLI will ask you the questions interactively.
+

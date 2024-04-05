@@ -1,0 +1,23 @@
+{
+  "name": "@svelte-compose/routify",
+  "version": "0.1.2",
+  "bin": "build/index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@svelte-compose/core": "workspace:*"
+  },
+  "bugs": "https://github.com/svelte-compose/svelte-compose/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/svelte-compose/svelte-compose/tree/main/projects/composers/routify"
+  },
+  "keywords": [
+    "routify",
+    "svelte",
+    "router",
+    "svelte",
+    "kit",
+    "svelte-kit"
+  ]
+}
