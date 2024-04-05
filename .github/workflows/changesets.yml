@@ -44,7 +44,7 @@ jobs:
               run: pnpm website:build
 
             - name: remove website from ignored folder
-              run: cp ./projects/website/build/ ./projects/website/build_prod/
+              run: cp -r ./projects/website/build/ ./projects/website/build_prod/
 
             # - name: create and publish versions
             #   id: changesets
