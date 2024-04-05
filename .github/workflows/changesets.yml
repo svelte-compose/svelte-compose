@@ -43,8 +43,8 @@ jobs:
             - name: website
               run: pnpm website:build
 
-            - name: remove website from ignored folder
-              run: cp -r ./projects/website/build ./projects/website/build_prod
+            - name: remove gitignore for publish
+              run: rm .gitignore
 
             # - name: create and publish versions
             #   id: changesets
