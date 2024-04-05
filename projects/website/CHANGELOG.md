@@ -1,5 +1,11 @@
 # @svelte-compose/website
 
+## 0.2.1
+
+### Patch Changes
+
+- fix website link ([`78153dd9bf033b7ac85eedd0069a273304927f54`](https://github.com/svelte-compose/svelte-compose/commit/78153dd9bf033b7ac85eedd0069a273304927f54))
+
 ## 0.2.0
 
 ### Minor Changes
