@@ -43,22 +43,19 @@ jobs:
             - name: website
               run: pnpm website:build
 
-            # - name: remove gitignore for publish
-            #   run: rm .gitignore
+            - name: create and publish versions
+              id: changesets
+              uses: changesets/action@v1
+              with:
+                  publish: pnpm ci:publish
+                  version: pnpm ci:version
+                  createGithubReleases: false
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            # - name: create and publish versions
-            #   id: changesets
-            #   uses: changesets/action@v1
-            #   with:
-            #       publish: pnpm ci:publish
-            #       version: pnpm ci:version
-            #       createGithubReleases: false
-            #   env:
-            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Publish website
               uses: peaceiris/actions-gh-pages@v3
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./projects/website/build
                   cname: svelte-compose.com
-                  keep_files: true

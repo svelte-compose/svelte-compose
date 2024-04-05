@@ -6,7 +6,7 @@
     <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-right">
         <div class="text-sm lg:flex-grow">
             <a
-                href="https://github.com/manuel3108/nopcommerce-plugin-generator"
+                href="https://github.com/svelte-compose/svelte-compose"
                 class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
             >
                 Github
