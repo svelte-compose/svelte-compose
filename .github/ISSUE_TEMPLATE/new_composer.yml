@@ -33,16 +33,6 @@ body:
               available, please provide them here.
       validations:
           required: true
-    - type: checkboxes
-      id: environments
-      attributes:
-          label: Environments
-          description: Which environments does `tool` supports
-          options:
-              - label: svelte
-                required: false
-              - label: svelte-kit
-                required: false
     - type: textarea
       id: integration_summary
       attributes:
