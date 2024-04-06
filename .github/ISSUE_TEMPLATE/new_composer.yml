@@ -1,7 +1,7 @@
 name: New composer
 description: This can be used to request the creation of a new composer
 labels:
-    - new-composer
+    - "C: new-composer"
 body:
     - type: markdown
       attributes:
