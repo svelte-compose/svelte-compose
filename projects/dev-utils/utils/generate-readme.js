@@ -26,7 +26,7 @@ export function generateReadme(composer) {
 
     return `
 <p style="text-align: center;">
-    <img src="${metadata.website.logo}" height="50" />
+    <img src="${domain}/composer/${metadata.id}/logo.svg" height="50" />
 </p>
 
 # ${metadata.name}
