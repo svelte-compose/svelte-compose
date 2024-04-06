@@ -25,7 +25,7 @@ export function generateReadme(composer) {
     const composerNpx = `npx ${metadata.package}@latest`;
 
     return `
-<p style="text-align: center;">
+<p align="center">
     <img src="${domain}/composer/${metadata.id}/logo.svg" height="50" />
 </p>
 
