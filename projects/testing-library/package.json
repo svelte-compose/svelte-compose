@@ -1,6 +1,6 @@
 {
   "name": "@svelte-compose/testing-library",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "license": "MIT",
   "exports": "./build/index.js",

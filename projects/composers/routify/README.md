@@ -1,5 +1,5 @@
 
-<p style="text-align: center;">
+<p align="center">
     <img src="https://svelte-compose.com/composer/routify/logo.svg" height="50" />
 </p>
 

@@ -1,5 +1,5 @@
 
-<p style="text-align: center;">
+<p align="center">
     <img src="https://svelte-compose.com/composer/mdsvex/logo.svg" height="50" />
 </p>
 

@@ -1,5 +1,11 @@
 # @svelte-compose/testing-library
 
+## 0.1.2
+
+### Patch Changes
+
+- use npm to install dependencies while testing ([#4](https://github.com/svelte-compose/svelte-compose/pull/4))
+
 ## 0.1.1
 
 ### Patch Changes
