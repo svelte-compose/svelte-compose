@@ -25,7 +25,7 @@ export const tests = defineComposerTests({
             name: "box properties",
             run: async ({ expectProperty }) => {
                 const selector = "#" + boxId;
-                await expectProperty(selector, "background-color", "rgb(255, 255, 255)");
+                await expectProperty(selector, "background-color", "rgb(20, 22, 26)");
                 await expectProperty(selector, "border-radius", "12px");
                 await expectProperty(selector, "color", "rgb(171, 177, 191)");
                 await expectProperty(selector, "display", "block");
