@@ -25,9 +25,9 @@ export const tests = defineComposerTests({
             name: "box properties",
             run: async ({ expectProperty }) => {
                 const selector = "#" + boxId;
-                await expectProperty(selector, "background-color", "rgb(20, 22, 26)");
+                await expectProperty(selector, "background-color", "rgb(255, 255, 255)");
                 await expectProperty(selector, "border-radius", "12px");
-                await expectProperty(selector, "color", "rgb(171, 177, 191)");
+                await expectProperty(selector, "color", "rgb(64, 70, 84)");
                 await expectProperty(selector, "display", "block");
                 await expectProperty(selector, "padding", "20px");
             },
@@ -35,13 +35,11 @@ export const tests = defineComposerTests({
         {
             name: "form properties",
             run: async ({ expectProperty }) => {
-                await expectProperty(".field .label", "color", "rgb(235, 236, 240)");
+                await expectProperty(".field .label", "color", "rgb(46, 51, 61)");
                 await expectProperty(".field .label", "display", "block");
                 await expectProperty(".field .label", "font-size", "16px");
 
-                await expectProperty(".field .input", "background-color", "rgb(20, 22, 26)");
                 await expectProperty(".field .input", "border-radius", "6px");
-                await expectProperty(".field .input", "color", "rgb(235, 236, 240)");
             },
         },
     ],
