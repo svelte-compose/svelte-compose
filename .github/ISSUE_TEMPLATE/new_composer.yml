@@ -52,7 +52,6 @@ body:
               setup a new svelte project, that supports the tool you mentioned out of
               the box.
           value: |-
-              // Sample, please adjust to the tools needs
               1. install package `tool`
               2. modify `svelte-config.js` and to add tool as preprocessor
               3. import tool inside `+layout.svelte`
