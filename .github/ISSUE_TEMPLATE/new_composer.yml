@@ -17,13 +17,6 @@ body:
               In order to simplify the creation of new composers from a development
               perspective, please answer the following questions.
     - type: input
-      id: name
-      attributes:
-          label: Name
-          description: The tool you would like to have integrated.
-      validations:
-          required: true
-    - type: input
       id: website
       attributes:
           label: Website
