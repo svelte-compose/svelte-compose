@@ -1,5 +1,11 @@
 # @svelte-compose/bulma
 
+## 0.2.1
+
+### Patch Changes
+
+- update readmes ([`8b15b0c93381ff43c78011f9c22183adcc9fcb83`](https://github.com/svelte-compose/svelte-compose/commit/8b15b0c93381ff43c78011f9c22183adcc9fcb83))
+
 ## 0.2.0
 
 ### Minor Changes

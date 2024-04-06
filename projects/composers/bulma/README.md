@@ -1,6 +1,6 @@
 
 <p style="text-align: center;">
-    <img src="./bulma.svg" height="50" />
+    <img src="https://svelte-compose.com/composer/bulma/logo.svg" height="50" />
 </p>
 
 # Bulma

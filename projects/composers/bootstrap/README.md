@@ -1,6 +1,6 @@
 
 <p style="text-align: center;">
-    <img src="./bootstrap.svg" height="50" />
+    <img src="https://svelte-compose.com/composer/bootstrap/logo.svg" height="50" />
 </p>
 
 # Bootstrap

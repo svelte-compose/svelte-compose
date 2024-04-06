@@ -1,6 +1,6 @@
 
 <p style="text-align: center;">
-    <img src="./mdsvex.svg" height="50" />
+    <img src="https://svelte-compose.com/composer/mdsvex/logo.svg" height="50" />
 </p>
 
 # mdsvex

@@ -1,6 +1,6 @@
 
 <p style="text-align: center;">
-    <img src="./routify.svg" height="50" />
+    <img src="https://svelte-compose.com/composer/routify/logo.svg" height="50" />
 </p>
 
 # routify
