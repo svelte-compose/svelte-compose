@@ -35,7 +35,7 @@ export async function askQuestionsAndAssignValuesToWorkspace<Args extends ArgTyp
     }
 
     if (needsToAskQuestions) {
-        startPrompts(config.metadata.package);
+        startPrompts(`${config.metadata.package}@${config.metadata.version}`);
     }
 
     for (const optionKey of Object.keys(config.options)) {
