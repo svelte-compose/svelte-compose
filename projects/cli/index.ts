@@ -15,10 +15,13 @@ import { program } from "commander";
 import { categories } from "@svelte-compose/core";
 import { RemoteControlOptions } from "@svelte-compose/core/composer/remoteControl";
 import { ComposerWithoutExplicitArgs } from "@svelte-compose/core/composer/config";
+import pkg from "./package.json";
 
 executeCli();
 
 async function executeCli() {
+    console.log(`${pkg.name}@${pkg.version}`);
+
     remoteControl.enable();
 
     const composersList = await getComposerList();
