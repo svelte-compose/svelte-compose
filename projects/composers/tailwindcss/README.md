@@ -1,6 +1,6 @@
 
 <p style="text-align: center;">
-    <img src="./tailwindcss.svg" height="50" />
+    <img src="https://svelte-compose.com/composer/tailwindcss/logo.svg" height="50" />
 </p>
 
 # TailwindCSS

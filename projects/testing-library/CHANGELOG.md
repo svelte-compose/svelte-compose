@@ -1,5 +1,12 @@
 # @svelte-compose/testing-library
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @svelte-compose/cli@2.0.1
+
 ## 0.1.0
 
 ### Minor Changes

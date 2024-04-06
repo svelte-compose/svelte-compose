@@ -1,6 +1,6 @@
 {
   "name": "@svelte-compose/routify",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "bin": "build/index.js",
   "type": "module",
   "license": "MIT",
