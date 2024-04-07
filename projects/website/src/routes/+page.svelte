@@ -17,6 +17,4 @@
 
 <ComposerCategoryList {composerCategories} linkCategories={true} bind:selectedComposers />
 
-<Box>
-    <Configurator bind:composers={selectedComposers} />
-</Box>
+<Configurator bind:composers={selectedComposers} />

@@ -35,8 +35,4 @@
     </Box>
 </BoxWrapper>
 
-<Box>
-    <h1>Configurator</h1>
-
-    <Configurator composers={[composer]}></Configurator>
-</Box>
+<Configurator composers={[composer]}></Configurator>
