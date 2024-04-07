@@ -110,6 +110,9 @@ importers:
       '@svelte-compose/tailwindcss':
         specifier: workspace:^
         version: link:../composers/tailwindcss
+      '@svelte-compose/threlte':
+        specifier: workspace:^
+        version: link:../composers/threlte
     devDependencies:
       commander:
         specifier: ^12.0.0
@@ -140,6 +143,12 @@ importers:
         version: link:../../core
 
   projects/composers/tailwindcss:
+    dependencies:
+      '@svelte-compose/core':
+        specifier: workspace:*
+        version: link:../../core
+
+  projects/composers/threlte:
     dependencies:
       '@svelte-compose/core':
         specifier: workspace:*
