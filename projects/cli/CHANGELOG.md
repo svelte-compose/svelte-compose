@@ -1,5 +1,22 @@
 # @svelte-compose/cli
 
+## 2.0.2
+
+### Patch Changes
+
+- display package versions ([#11](https://github.com/svelte-compose/svelte-compose/pull/11))
+
+- add threlte composer draft ([#13](https://github.com/svelte-compose/svelte-compose/pull/13))
+
+- Updated dependencies [[`9426c39a8ce67c5192e069e2b1c7bb9eab6f3037`](https://github.com/svelte-compose/svelte-compose/commit/9426c39a8ce67c5192e069e2b1c7bb9eab6f3037)]:
+  - @svelte-compose/core@0.2.1
+  - @svelte-compose/bootstrap@0.1.2
+  - @svelte-compose/bulma@0.2.2
+  - @svelte-compose/mdsvex@0.3.2
+  - @svelte-compose/routify@0.2.2
+  - @svelte-compose/tailwindcss@0.2.2
+  - @svelte-compose/threlte@0.0.2
+
 ## 2.0.1
 
 ### Patch Changes
