@@ -2,6 +2,7 @@
     "typescript.tsserver.experimental.enableProjectDiagnostics": true,
     "cSpell.words": [
         "popperjs",
-        "Svex"
+        "Svex",
+        "threlte"
     ]
 }

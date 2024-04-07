@@ -36,12 +36,12 @@ pnpm changeset
 -   stop development server
 -   duplicate existing composer, and make some minor modification (like package name)
 -   delete its `node_modules` and `build` folder
+-   delete the `CHANGELOG.md` file
 -   add the new composers as a peer dependency to `@svelte-compose/cli`
 -   set an appropriate package name & version version in `package.json`
 -   run `pnpm install` (ignore the warnings)
--   delete the `CHANGELOG.md` file
 -   start development server `pnpm build:dev`
--   once you have finished developing your adder, don't forget to generate the readme `pnpm utils:readmes`
+-   once you have finished developing your adder, don't forget to generate the readme `pnpm utils:readmes` & the `package.json` with `pnpm utils:packages`
 
 ## test a composer
 
