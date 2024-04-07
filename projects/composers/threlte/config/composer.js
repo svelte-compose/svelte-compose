@@ -10,7 +10,7 @@ export const composer = defineComposerConfig({
         category: categories.tools,
         environments: { svelte: true, kit: true },
         website: {
-            logo: "./tailwindcss.svg",
+            logo: "./threlte.svg",
             keywords: ["threlte", "3d", "3d apps"],
             documentation: "https://threlte.xyz/docs/learn/getting-started/installation",
         },
