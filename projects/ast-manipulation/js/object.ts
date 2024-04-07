@@ -6,7 +6,8 @@ export function property<T extends AstKinds.ExpressionKind | AstTypes.Identifier
     fallback: T,
 ): T {
     const objectExpression = ast;
-    const properties = objectExpression.properties.filter((x) => x.type == "ObjectProperty") as AstTypes.ObjectProperty[];
+    const properties =
+        (objectExpression.properties?.filter((x) => x.type == "ObjectProperty") as AstTypes.ObjectProperty[]) ?? [];
     let property = properties.find((x) => (x.key as AstTypes.Identifier).name == name);
     let propertyValue: T;
 
@@ -30,6 +31,7 @@ export function property<T extends AstKinds.ExpressionKind | AstTypes.Identifier
             value: propertyValue,
         };
 
+        if (!objectExpression.properties) objectExpression.properties = [];
         objectExpression.properties.push(property);
     }
 
