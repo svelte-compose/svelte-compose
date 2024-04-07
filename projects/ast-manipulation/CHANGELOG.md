@@ -1,5 +1,13 @@
 # @svelte-compose/ast-manipulation
 
+## 1.2.1
+
+### Patch Changes
+
+- fix bug while creating property if object is empty ([#13](https://github.com/svelte-compose/svelte-compose/pull/13))
+
+- add threlte composer draft ([#13](https://github.com/svelte-compose/svelte-compose/pull/13))
+
 ## 1.2.0
 
 ### Minor Changes

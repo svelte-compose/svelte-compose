@@ -1,6 +1,6 @@
 {
   "name": "@svelte-compose/threlte",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "bin": "build/index.js",
   "type": "module",
   "license": "MIT",
@@ -13,9 +13,9 @@
     "url": "https://github.com/svelte-compose/svelte-compose/tree/main/projects/composers/threlte"
   },
   "keywords": [
-    "tailwind",
-    "postcss",
-    "autoprefixer",
+    "threlte",
+    "3d",
+    "3d apps",
     "svelte",
     "kit",
     "svelte-kit"

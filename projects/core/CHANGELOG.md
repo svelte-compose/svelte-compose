@@ -1,5 +1,14 @@
 # @svelte-compose/core
 
+## 0.2.1
+
+### Patch Changes
+
+- display package versions ([#11](https://github.com/svelte-compose/svelte-compose/pull/11))
+
+- Updated dependencies [[`b9c62ec8097fcd2ce125b91bf970a0ab67ba5b71`](https://github.com/svelte-compose/svelte-compose/commit/b9c62ec8097fcd2ce125b91bf970a0ab67ba5b71), [`b9c62ec8097fcd2ce125b91bf970a0ab67ba5b71`](https://github.com/svelte-compose/svelte-compose/commit/b9c62ec8097fcd2ce125b91bf970a0ab67ba5b71)]:
+  - @svelte-compose/ast-manipulation@1.2.1
+
 ## 0.2.0
 
 ### Minor Changes
