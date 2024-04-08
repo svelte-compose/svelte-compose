@@ -119,7 +119,7 @@
     {/each}
 
     {#if !composers || composers.length == 0}
-        <p>You have not selected any composers, but you can still use the composer interactively.</p>
+        <p>You have not selected any composers, but you can still use the cli interactively.</p>
     {/if}
 
     <CopyCommand {command} />
