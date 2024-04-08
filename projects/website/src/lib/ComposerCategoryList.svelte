@@ -12,18 +12,18 @@
     export let linkCategories = false;
 
     /** @type {string[]}*/
-    let selectedComposersIds = [];
+    let selectedComposerIds = [];
 
     /**
      * Selects or deselects a composer given it's id
      * @param {string} composerId
      */
     function selectOrDeselectComposer(composerId) {
-        if (selectedComposersIds.includes(composerId)) {
-            selectedComposersIds = selectedComposersIds.filter((x) => x != composerId);
+        if (selectedComposerIds.includes(composerId)) {
+            selectedComposerIds = selectedComposerIds.filter((x) => x != composerId);
         } else {
-            selectedComposersIds.push(composerId);
-            selectedComposersIds = selectedComposersIds;
+            selectedComposerIds.push(composerId);
+            selectedComposerIds = selectedComposerIds;
         }
 
         /** @type {import("$lib/composer.js").ComposerMetadataWithOptions[]} */
@@ -32,7 +32,7 @@
             allComposers.push(...composers);
         }
 
-        selectedComposers = allComposers.filter((x) => selectedComposersIds.includes(x.metadata.id));
+        selectedComposers = allComposers.filter((x) => selectedComposerIds.includes(x.metadata.id));
     }
 </script>
 
@@ -49,18 +49,28 @@
         <BoxWrapper>
             {#each composers as { metadata }}
                 <Box>
-                    <a href="/composer/{metadata.id}">
-                        <ComposerImage id={metadata.id} name={metadata.name} />
-                        <div class="test">{metadata.name}</div>
-                    </a>
+                    <div class="composer-item">
+                        <a href="/composer/{metadata.id}">
+                            <ComposerImage id={metadata.id} name={metadata.name} />
+                            <div class="test">{metadata.name}</div>
+                        </a>
 
-                    <div>
-                        {metadata.description}
+                        <div>
+                            {metadata.description}
+                        </div>
+
+                        <SupportedEnvironments svelte={metadata.environments.svelte} kit={metadata.environments.kit} />
+
+                        <div class="button-wrapper">
+                            <button class="button is-primary" on:click={() => selectOrDeselectComposer(metadata.id)}>
+                                {#if !selectedComposerIds.includes(metadata.id)}
+                                    +
+                                {:else}
+                                    -
+                                {/if}
+                            </button>
+                        </div>
                     </div>
-
-                    <SupportedEnvironments svelte={metadata.environments.svelte} kit={metadata.environments.kit} />
-
-                    <button class="button is-primary" on:click={() => selectOrDeselectComposer(metadata.id)}>Add / remove</button>
                 </Box>
             {/each}
         </BoxWrapper>
@@ -70,5 +80,24 @@
 <style>
     .category {
         margin-bottom: 2rem;
+    }
+
+    .composer-item {
+        position: relative;
+    }
+
+    .button-wrapper {
+        position: absolute;
+        top: -1.5rem;
+        right: -1.5rem;
+        text-align: center;
+    }
+
+    .button-wrapper button {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 100%;
+        padding-left: 0;
+        padding-right: 0;
     }
 </style>

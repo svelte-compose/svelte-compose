@@ -1,4 +1,5 @@
 <script>
+    import Box from "./Box.svelte";
     import CopyCommand from "./CopyCommand.svelte";
 
     /** @type {import("./composer").ComposerMetadataWithOptions[]} */
@@ -81,34 +82,45 @@
     }
 </script>
 
-<hr />
-{#each composers as { metadata, options }}
-    <div>{metadata.name}</div>
-    {#if options}
-        {#each Object.entries(options) as [key, value]}
-            <div>
-                <div>{key}</div>
-                <div>{value.question}</div>
-                <div>{value.default}</div>
+<h1 class="text-xl">Configurator</h1>
+<p>
+    You can select one or multiple composers and we will ask you questions for each composer. At the end we generate one cli
+    command for you, that you can execute in your project. Otherwise you can use the cli interactively.
+</p>
 
-                {#if value.type == "boolean"}
-                    <label>
-                        <input type="radio" value={true} bind:group={selectedOptions[metadata.id][key]} />
-                        Yes
-                    </label>
-                    <label>
-                        <input type="radio" value={false} bind:group={selectedOptions[metadata.id][key]} />
-                        No
-                    </label>
-                {:else if value.type == "number"}
-                    <input type="number" bind:value={selectedOptions[metadata.id][key]} />
-                {:else if value.type == "string"}
-                    <input type="text" bind:value={selectedOptions[metadata.id][key]} />
-                {/if}
-            </div>
-            <hr />
-        {/each}
+<Box>
+    {#each composers as { metadata, options }}
+        <div class="font-bold underline">{metadata.name}</div>
+        {#if options && Object.entries(options).length > 0}
+            {#each Object.entries(options) as [key, value]}
+                <div>
+                    <span class="w-2/3 inline-block">{value.question}</span>
+
+                    {#if value.type == "boolean"}
+                        <label>
+                            <input type="radio" value={true} bind:group={selectedOptions[metadata.id][key]} />
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" value={false} bind:group={selectedOptions[metadata.id][key]} />
+                            No
+                        </label>
+                    {:else if value.type == "number"}
+                        <input type="number" bind:value={selectedOptions[metadata.id][key]} />
+                    {:else if value.type == "string"}
+                        <input type="text" bind:value={selectedOptions[metadata.id][key]} />
+                    {/if}
+                </div>
+            {/each}
+        {:else}
+            <p>This composer does not have any options.</p>
+        {/if}
+        <hr />
+    {/each}
+
+    {#if !composers || composers.length == 0}
+        <p>You have not selected any composers, but you can still use the cli interactively.</p>
     {/if}
-{/each}
 
-<CopyCommand {command} />
+    <CopyCommand {command} />
+</Box>
