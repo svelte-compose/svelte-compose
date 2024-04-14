@@ -1,5 +1,11 @@
 # @svelte-compose/ast-tooling
 
+## 0.2.1
+
+### Patch Changes
+
+- support json with comments ([#14](https://github.com/svelte-compose/svelte-compose/pull/14))
+
 ## 0.2.0
 
 ### Minor Changes
