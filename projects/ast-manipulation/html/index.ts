@@ -3,7 +3,7 @@ import { HtmlChildNode, HtmlDocument, HtmlElement, HtmlElementType, parseHtml } 
 export type HtmlAstEditor = {
     ast: HtmlDocument;
     div: typeof div;
-    htmlElement: typeof htmlElement;
+    element: typeof element;
     addFromRawHtml: typeof addFromRawHtml;
     insertElement: typeof insertElement;
     appendElement: typeof appendElement;
@@ -14,7 +14,7 @@ export function getHtmlAstEditor(document: HtmlDocument) {
         ast: document,
         div,
         addFromRawHtml,
-        htmlElement,
+        element,
         insertElement,
         appendElement,
     };
@@ -22,10 +22,10 @@ export function getHtmlAstEditor(document: HtmlDocument) {
 }
 
 function div(attributes: Record<string, string> = {}) {
-    return htmlElement("div", attributes);
+    return element("div", attributes);
 }
 
-function htmlElement(tagName: string, attributes: Record<string, string> = {}) {
+function element(tagName: string, attributes: Record<string, string> = {}) {
     const element = new HtmlElement(tagName, {}, undefined, HtmlElementType.Tag);
     element.attribs = attributes;
     return element;

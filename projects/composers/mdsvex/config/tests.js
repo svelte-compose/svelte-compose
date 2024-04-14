@@ -73,6 +73,6 @@ function useMarkdownFile({ js, html }) {
 
     const div = html.div({ class: "mdsvex" });
     html.appendElement(html.ast.childNodes, div);
-    const mdsvexNode = html.htmlElement("Demo");
+    const mdsvexNode = html.element("Demo");
     html.appendElement(div.childNodes, mdsvexNode);
 }

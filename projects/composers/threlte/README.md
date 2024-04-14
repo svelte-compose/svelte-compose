@@ -1,4 +1,3 @@
-
 <p align="center">
     <img src="https://svelte-compose.com/composer/threlte/logo.svg" height="50" />
 </p>
@@ -10,11 +9,13 @@
 You can find all options for this composer on [this site](https://svelte-compose.com/composer/threlte). We will only provide a short breakdown of the composer features here.
 
 Basic usage
+
 ```sh
 npx @svelte-compose/threlte@latest
 ```
 
 In case you already have a directory in mind, you can use this:
+
 ```sh
 npx @svelte-compose/threlte@latest --path ./your-project
 ```

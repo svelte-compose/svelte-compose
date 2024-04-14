@@ -1,10 +1,12 @@
 import { getCssAstEditor, getHtmlAstEditor, getJsAstEditor } from "@svelte-compose/ast-manipulation";
 import {
     parseHtml,
+    parseJson,
     parsePostcss,
     parseScript,
     parseSvelteFile,
     serializeHtml,
+    serializeJson,
     serializePostcss,
     serializeScript,
     serializeSvelteFile,
@@ -71,9 +73,9 @@ function handleCssFile<Args extends ArgType>(content: string, fileDetails: CssFi
 }
 
 function handleJsonFile<Args extends ArgType>(content: string, fileDetails: JsonFileType<Args>, workspace: Workspace<Args>) {
-    const data = JSON.parse(content);
+    const data = parseJson(content);
     fileDetails.content({ data, ...workspace });
-    content = JSON.stringify(data, null, 4);
+    content = serializeJson(content, data);
     return content;
 }
 

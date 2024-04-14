@@ -1,5 +1,9 @@
 import { AstKinds, AstTypes } from "@svelte-compose/ast-tooling";
-import { ExportDefaultReturn } from "./object";
+
+export type ExportDefaultReturn<T> = {
+    astNode: AstTypes.ExportDefaultDeclaration;
+    value: T;
+};
 
 export function defaultExport<T extends AstKinds.ExpressionKind>(
     ast: AstTypes.Program,

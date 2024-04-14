@@ -66,6 +66,6 @@ function prepareCoreTest({ html }) {
  * @param {import("@svelte-compose/core/composer/config.js").SvelteFileEditorArgs<Args>} editor
  */
 function prepareTypographyTest({ html }) {
-    const div = html.htmlElement("p", { class: "text-lg text-right line-through", id: typographyDivId });
+    const div = html.element("p", { class: "text-lg text-right line-through", id: typographyDivId });
     html.appendElement(html.ast.childNodes, div);
 }
