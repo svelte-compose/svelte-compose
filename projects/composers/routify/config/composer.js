@@ -51,7 +51,7 @@ export const composer = defineComposerConfig({
                 const routerVariableDeclaration = js.variables.declaration(js.ast, "const", "router", createRouterFunction);
                 js.exports.namedExport(js.ast, "router", routerVariableDeclaration);
 
-                const router = html.htmlElement("Router", { "{router}": "" });
+                const router = html.element("Router", { "{router}": "" });
                 html.insertElement(html.ast.childNodes, router);
             },
         },

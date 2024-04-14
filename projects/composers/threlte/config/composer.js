@@ -1,6 +1,6 @@
 import { categories, defineComposerConfig, generateComposerInfo } from "@svelte-compose/core";
 import pkg from "../package.json";
-import { options } from "./options";
+import { options } from "./options.js";
 
 export const composer = defineComposerConfig({
     metadata: {
@@ -40,36 +40,71 @@ export const composer = defineComposerConfig({
             content: ({ data }) => {
                 if (!data.compilerOptions) data.compilerOptions = {};
 
-                data.moduleResolution = "Bundler";
+                data.compilerOptions.moduleResolution = "Bundler";
             },
         },
         {
             name: () => "src/App.svelte",
             contentType: "svelte",
-            condition: ({ kit }) => !kit.installed,
-            content: ({ js, html }) => {
-                js.imports.addNamed(js.ast, "@threlte/core", { Canvas: "Canvas" });
-                js.imports.addDefault(js.ast, "./Scene.svelte", "Scene");
-
-                const canvas = html.htmlElement("Canvas");
-                html.insertElement(html.ast.childNodes, canvas);
-                const scene = html.htmlElement("Scene");
-                html.appendElement(canvas.childNodes, scene);
-            },
+            condition: ({ kit, options }) => !kit.installed && options.addDemo,
+            content: ({ js, html, kit }) => addDemoSceneUsage(js, html, kit.installed),
+        },
+        {
+            name: ({ kit }) => `${kit.routesDirectory}/+page.svelte`,
+            contentType: "svelte",
+            condition: ({ kit, options }) => kit.installed && options.addDemo,
+            content: ({ js, html, kit }) => addDemoSceneUsage(js, html, kit.installed),
         },
         {
             name: () => "src/Scene.svelte",
             contentType: "svelte",
-            content: ({ js, html }) => {
-                js.imports.addNamed(js.ast, "@threlte/core", { T: "T" });
-
-                const htmlString = `
-<T.Mesh>
-  <T.BoxGeometry />
-  <T.MeshBasicMaterial />
-</T.Mesh>`;
-                html.addFromRawHtml(html.ast.childNodes, htmlString);
-            },
+            condition: ({ kit, options }) => !kit.installed && options.addDemo,
+            content: ({ js, html }) => addDemoScene(js, html),
+        },
+        {
+            name: ({ kit }) => `${kit.libDirectory}/Scene.svelte`,
+            contentType: "svelte",
+            condition: ({ kit, options }) => kit.installed && options.addDemo,
+            content: ({ js, html }) => addDemoScene(js, html),
         },
     ],
 });
+
+/**
+ * Add a small JS snippet to support JS bootstrap components
+ * @param {import("@svelte-compose/core/composer/config.js").JsAstEditor} js
+ * @param {import("@svelte-compose/core/composer/config.js").HtmlAstEditor} html
+ */
+function addDemoScene(js, html) {
+    js.imports.addNamed(js.ast, "@threlte/core", { T: "T" });
+
+    const htmlString = `
+<T.Mesh position.y="{1}">
+    <T.BoxGeometry args="{[1, 2, 1]}" />
+    <T.MeshBasicMaterial color="pink" />
+</T.Mesh>`;
+    html.addFromRawHtml(html.ast.childNodes, htmlString);
+}
+
+/**
+ * Add a small JS snippet to support JS bootstrap components
+ * @param {import("@svelte-compose/core/composer/config.js").JsAstEditor} js
+ * @param {import("@svelte-compose/core/composer/config.js").HtmlAstEditor} html
+ * @param {boolean} isKit
+ */
+function addDemoSceneUsage(js, html, isKit) {
+    js.imports.addNamed(js.ast, "@threlte/core", { Canvas: "Canvas" });
+    if (isKit) {
+        js.imports.addDefault(js.ast, "$lib/Scene.svelte", "Scene");
+    } else {
+        js.imports.addDefault(js.ast, "./Scene.svelte", "Scene");
+    }
+
+    const div = html.div();
+    html.insertElement(html.ast.childNodes, div);
+
+    const canvas = html.element("Canvas");
+    html.insertElement(div.childNodes, canvas);
+    const scene = html.element("Scene");
+    html.appendElement(canvas.childNodes, scene);
+}

@@ -163,7 +163,7 @@ function addBootstrapJavaScript(js, html, isKit) {
     js.common.addFromString(methodBody, methodBodyString);
 
     if (isKit) {
-        const slot = html.htmlElement("slot");
+        const slot = html.element("slot");
         html.ast.childNodes.push(slot);
     }
 }

@@ -8,6 +8,7 @@ import { Root as CssAst, Declaration, Rule, AtRule, Comment } from "postcss";
 import { parse as postcssParse } from "postcss";
 import { namedTypes as AstTypes } from "ast-types";
 import * as AstKinds from "ast-types/gen/kinds";
+import * as fleece from "golden-fleece";
 
 /**
  * Most of the AST tooling is pretty big in bundle size and bundling takes forever.
@@ -63,7 +64,7 @@ export function parseHtml(content: string) {
 }
 
 export function serializeHtml(ast: Document) {
-    return serializeDom(ast, { encodeEntities: "utf8" });
+    return serializeDom(ast, { encodeEntities: "utf8", selfClosingTags: true });
 }
 
 export type SvelteAst = {
@@ -124,4 +125,18 @@ export function serializeSvelteFile(asts: SvelteAst) {
 
     const content = serializeHtml(htmlAst);
     return content;
+}
+
+export function parseJson(content: string) {
+    // some of the files we need to process contain comments. The default
+    // node JSON.parse fails parsing those comments.
+
+    // use https://github.com/Rich-Harris/golden-fleece#fleecepatchstr-value instead
+    return fleece.evaluate(content);
+}
+
+export function serializeJson(originalInput: string, data: any) {
+    // some of the files we need to process contain comments. The default
+    // node JSON.parse fails parsing those comments.
+    return fleece.patch(originalInput, data);
 }
