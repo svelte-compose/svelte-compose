@@ -3,3 +3,4 @@
 CHANGELOG.md
 projects/website/.svelte-kit/
 projects/composers/*/README.md
+projects/composers/*/package.json

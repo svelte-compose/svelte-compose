@@ -1,23 +1,23 @@
 {
-  "name": "@svelte-compose/mdsvex",
-  "version": "0.3.3",
-  "bin": "build/index.js",
-  "type": "module",
-  "license": "MIT",
-  "dependencies": {
-    "@svelte-compose/core": "workspace:*"
-  },
-  "bugs": "https://github.com/svelte-compose/svelte-compose/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/svelte-compose/svelte-compose/tree/main/projects/composers/mdsvex"
-  },
-  "keywords": [
-    "mdsvex",
-    "svelte",
-    "markdown",
-    "svelte",
-    "kit",
-    "svelte-kit"
-  ]
+    "name": "@svelte-compose/mdsvex",
+    "version": "0.3.3",
+    "bin": "build/index.js",
+    "type": "module",
+    "license": "MIT",
+    "dependencies": {
+        "@svelte-compose/core": "workspace:*"
+    },
+    "bugs": "https://github.com/svelte-compose/svelte-compose/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/svelte-compose/svelte-compose/tree/main/projects/composers/mdsvex"
+    },
+    "keywords": [
+        "mdsvex",
+        "svelte",
+        "markdown",
+        "svelte",
+        "kit",
+        "svelte-kit"
+    ]
 }

@@ -11,5 +11,5 @@
         "allowSyntheticDefaultImports": true,
         "sourceMap": true,
         "outDir": "build/"
-    },
+    }
 }

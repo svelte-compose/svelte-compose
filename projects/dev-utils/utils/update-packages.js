@@ -13,7 +13,7 @@ export async function updateComposerPackages() {
         const content = await readFile(filePath);
         const data = JSON.parse(content.toString());
         updateComposerPackage(data, composerConfig);
-        await writeFile(filePath, JSON.stringify(data, null, 2));
+        await writeFile(filePath, JSON.stringify(data, null, 4));
     }
 }
 

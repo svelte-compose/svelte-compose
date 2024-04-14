@@ -1,13 +1,13 @@
 {
-  "name": "@svelte-compose/tests",
-  "private": true,
-  "version": "0.1.1",
-  "type": "module",
-  "license": "MIT",
-  "bin": "./index.js",
-  "devDependencies": {
-    "@svelte-compose/testing-library": "workspace:^",
-    "@svelte-compose/cli": "workspace:^",
-    "@svelte-compose/core": "workspace:^"
-  }
+    "name": "@svelte-compose/tests",
+    "private": true,
+    "version": "0.1.1",
+    "type": "module",
+    "license": "MIT",
+    "bin": "./index.js",
+    "devDependencies": {
+        "@svelte-compose/testing-library": "workspace:^",
+        "@svelte-compose/cli": "workspace:^",
+        "@svelte-compose/core": "workspace:^"
+    }
 }
