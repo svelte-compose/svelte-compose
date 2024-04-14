@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import { generateComposerReadmes } from "./utils/generate-readme.js";
 import { updateComposerPackages } from "./utils/update-packages.js";
 
