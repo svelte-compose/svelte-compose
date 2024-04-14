@@ -1,5 +1,12 @@
 # @svelte-compose/routify
 
+## 0.2.3
+
+### Patch Changes
+
+- Updated dependencies [[`db1e6a78433d41c8aef40bf9277b18686003380e`](https://github.com/svelte-compose/svelte-compose/commit/db1e6a78433d41c8aef40bf9277b18686003380e)]:
+  - @svelte-compose/core@0.2.2
+
 ## 0.2.2
 
 ### Patch Changes

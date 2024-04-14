@@ -1,5 +1,17 @@
 # @svelte-compose/website
 
+## 0.2.4
+
+### Patch Changes
+
+- imporove configurator ([#15](https://github.com/svelte-compose/svelte-compose/pull/15))
+
+- improve add to configurator button ([#15](https://github.com/svelte-compose/svelte-compose/pull/15))
+
+- Updated dependencies [[`db1e6a78433d41c8aef40bf9277b18686003380e`](https://github.com/svelte-compose/svelte-compose/commit/db1e6a78433d41c8aef40bf9277b18686003380e), [`db1e6a78433d41c8aef40bf9277b18686003380e`](https://github.com/svelte-compose/svelte-compose/commit/db1e6a78433d41c8aef40bf9277b18686003380e)]:
+  - @svelte-compose/cli@2.0.3
+  - @svelte-compose/core@0.2.2
+
 ## 0.2.3
 
 ### Patch Changes
