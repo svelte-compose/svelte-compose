@@ -18,7 +18,7 @@ export async function generateComposerReadmes() {
 
 /**
  * Generates the contents of the readme for a given composer
- * @param {import("@svelte-compose/core/composer/config").ComposerConfig<Record<string, import("@svelte-compose/core/composer/config").Question>>} composer
+ * @param {import("@svelte-compose/core/composer/config").ComposerConfig<Record<string, import("@svelte-compose/core/composer/options").Question>>} composer
  */
 export function generateReadme(composer) {
     const metadata = composer.metadata;
@@ -50,7 +50,7 @@ ${generateOptions(composer, composerNpx)}
 }
 
 /**
- * @param {import("@svelte-compose/core/composer/config").ComposerConfig<Record<string, import("@svelte-compose/core/composer/config").Question>>} composer
+ * @param {import("@svelte-compose/core/composer/config").ComposerConfig<Record<string, import("@svelte-compose/core/composer/options").Question>>} composer
  * @param {string} composerNpx
  */
 function generateOptions(composer, composerNpx) {

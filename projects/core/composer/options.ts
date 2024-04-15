@@ -1,7 +1,42 @@
 import { OptionValues, program } from "commander";
 import { booleanPrompt, endPrompts, startPrompts, textPrompt } from "../utils/prompts.js";
 import { addPropertyToWorkspaceOption } from "../utils/workspace.js";
-import { ArgType, ComposerConfig, Workspace } from "./config.js";
+import { ComposerConfig, Workspace } from "./config.js";
+
+export type BooleanDefaultValue = {
+    type: "boolean";
+    default: boolean;
+};
+
+export type StringDefaultValue = {
+    type: "string";
+    default: string;
+};
+
+export type NumberDefaultValue = {
+    type: "number";
+    default: number;
+};
+
+export type BaseQuestion = {
+    question: string;
+};
+
+export type BooleanQuestion = BaseQuestion & BooleanDefaultValue;
+export type StringQuestion = BaseQuestion & StringDefaultValue;
+export type NumberQuestion = BaseQuestion & NumberDefaultValue;
+export type Question = BooleanQuestion | StringQuestion | NumberQuestion;
+
+export type ArgType = Record<string, Question>;
+export type ArgValues<Args extends ArgType> = {
+    [K in keyof Args]: Args[K]["type"] extends "string"
+        ? string
+        : Args[K]["type"] extends "boolean"
+          ? boolean
+          : Args[K]["type"] extends "number"
+            ? number
+            : never;
+};
 
 export function prepareAndParseCliOptions<Args extends ArgType>(config: ComposerConfig<Args>) {
     program.option("--path <string>", "Path to working directory");

@@ -43,8 +43,8 @@ export const tests = defineComposerTests({
 });
 
 /**
- * @template {import("@svelte-compose/core/composer/config.js").ArgType} Args
- * @param {import("@svelte-compose/core/composer/config.js").TextFileEditorArgs<Args>} editor
+ * @template {import("@svelte-compose/core/composer/options").ArgType} Args
+ * @param {import("@svelte-compose/core/files/processors.js").TextFileEditorArgs<Args>} editor
  */
 function addMarkdownFile(editor) {
     // example taken from website: https://mdsvex.pngwn.io
@@ -65,8 +65,8 @@ Markdown is pretty good but sometimes you just need more.
 }
 
 /**
- * @template {import("@svelte-compose/core/composer/config.js").ArgType} Args
- * @param {import("@svelte-compose/core/composer/config.js").SvelteFileEditorArgs<Args>} editor
+ * @template {import("@svelte-compose/core/composer/options").ArgType} Args
+ * @param {import("@svelte-compose/core/files/processors.js").SvelteFileEditorArgs<Args>} editor
  */
 function useMarkdownFile({ js, html }) {
     js.imports.addDefault(js.ast, "./Demo.svx", "Demo");

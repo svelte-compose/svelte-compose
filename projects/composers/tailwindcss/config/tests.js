@@ -53,8 +53,8 @@ export const tests = defineComposerTests({
 });
 
 /**
- * @template {import("@svelte-compose/core/composer/config.js").ArgType} Args
- * @param {import("@svelte-compose/core/composer/config.js").SvelteFileEditorArgs<Args>} editor
+ * @template {import("@svelte-compose/core/composer/options.js").ArgType} Args
+ * @param {import("@svelte-compose/core/files/processors.js").SvelteFileEditorArgs<Args>} editor
  */
 function prepareCoreTest({ html }) {
     const div = html.div({ class: "bg-slate-600 border-gray-50 border-4 mt-1", id: divId });
@@ -62,8 +62,8 @@ function prepareCoreTest({ html }) {
 }
 
 /**
- * @template {import("@svelte-compose/core/composer/config.js").ArgType} Args
- * @param {import("@svelte-compose/core/composer/config.js").SvelteFileEditorArgs<Args>} editor
+ * @template {import("@svelte-compose/core/composer/options.js").ArgType} Args
+ * @param {import("@svelte-compose/core/files/processors.js").SvelteFileEditorArgs<Args>} editor
  */
 function prepareTypographyTest({ html }) {
     const div = html.element("p", { class: "text-lg text-right line-through", id: typographyDivId });

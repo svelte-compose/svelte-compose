@@ -1,4 +1,12 @@
-import { CategoryDetails } from "./config";
+export type CategoryInfo = {
+    id: string;
+    name: string;
+    description: string;
+};
+
+export type CategoryDetails = {
+    [K in "styling" | "tools" | string]: CategoryInfo;
+};
 
 export const categories: CategoryDetails = {
     styling: {

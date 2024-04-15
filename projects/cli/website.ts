@@ -1,4 +1,5 @@
-import { ComposerConfig, Question } from "@svelte-compose/core/composer/config";
+import { ComposerConfig } from "@svelte-compose/core/composer/config";
+import { Question } from "@svelte-compose/core/composer/options";
 
 export function getComposerList(): string[] {
     // @ts-expect-error The list is assembled during build and injected by rollup.

@@ -46,8 +46,8 @@ export const tests = defineComposerTests({
 });
 
 /**
- * @template {import("@svelte-compose/core/composer/config.js").ArgType} Args
- * @param {import("@svelte-compose/core/composer/config.js").SvelteFileEditorArgs<Args>} editor
+ * @template {import("@svelte-compose/core/composer/options.js").ArgType} Args
+ * @param {import("@svelte-compose/core/files/processors.js").SvelteFileEditorArgs<Args>} editor
  */
 function prepareBoxTest({ html }) {
     const div = html.div({ class: "box", id: boxId });
@@ -55,8 +55,8 @@ function prepareBoxTest({ html }) {
 }
 
 /**
- * @template {import("@svelte-compose/core/composer/config.js").ArgType} Args
- * @param {import("@svelte-compose/core/composer/config.js").SvelteFileEditorArgs<Args>} editor
+ * @template {import("@svelte-compose/core/composer/options.js").ArgType} Args
+ * @param {import("@svelte-compose/core/files/processors.js").SvelteFileEditorArgs<Args>} editor
  */
 function prepareFormTest({ html }) {
     const rawHtmlTest = `<div class="field">
@@ -69,8 +69,8 @@ function prepareFormTest({ html }) {
 }
 
 /**
- * @template {import("@svelte-compose/core/composer/config.js").ArgType} Args
- * @param {import("@svelte-compose/core/composer/config.js").SvelteFileEditorArgs<Args>} editor
+ * @template {import("@svelte-compose/core/composer/options.js").ArgType} Args
+ * @param {import("@svelte-compose/core/files/processors.js").SvelteFileEditorArgs<Args>} editor
  */
 function prepareTests(editor) {
     prepareBoxTest(editor);

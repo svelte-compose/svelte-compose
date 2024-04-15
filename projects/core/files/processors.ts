@@ -1,4 +1,12 @@
-import { getCssAstEditor, getHtmlAstEditor, getJsAstEditor } from "@svelte-compose/ast-manipulation";
+import {
+    CssAstEditor,
+    HtmlAstEditor,
+    JsAstEditor,
+    SvelteAstEditor,
+    getCssAstEditor,
+    getHtmlAstEditor,
+    getJsAstEditor,
+} from "@svelte-compose/ast-manipulation";
 import {
     parseHtml,
     parseJson,
@@ -12,17 +20,63 @@ import {
     serializeSvelteFile,
 } from "@svelte-compose/ast-tooling";
 import { fileExistsWorkspace, format, readFile, writeFile } from "./utils.js";
-import {
-    ArgType,
-    CssFileType,
-    FileTypes,
-    HtmlFileType,
-    JsonFileType,
-    ScriptFileType,
-    SvelteFileType,
-    TextFileType,
-    Workspace,
-} from "../composer/config.js";
+import { ConditionDefinition, Workspace } from "../composer/config.js";
+import { ArgType } from "../composer/options.js";
+
+export type BaseFile<Args extends ArgType> = {
+    name: (options: Workspace<Args>) => string;
+    condition?: ConditionDefinition<Args>;
+};
+
+export type ScriptFileEditorArgs<Args extends ArgType> = JsAstEditor & Workspace<Args>;
+export type ScriptFileType<Args extends ArgType> = {
+    contentType: "script";
+    content: (editor: ScriptFileEditorArgs<Args>) => void;
+};
+export type ScriptFile<Args extends ArgType> = ScriptFileType<Args> & BaseFile<Args>;
+
+export type TextFileEditorArgs<Args extends ArgType> = { content: string } & Workspace<Args>;
+export type TextFileType<Args extends ArgType> = {
+    contentType: "text";
+    content: (editor: TextFileEditorArgs<Args>) => string;
+};
+export type TextFile<Args extends ArgType> = TextFileType<Args> & BaseFile<Args>;
+
+export type SvelteFileEditorArgs<Args extends ArgType> = SvelteAstEditor & Workspace<Args>;
+export type SvelteFileType<Args extends ArgType> = {
+    contentType: "svelte";
+    content: (editor: SvelteFileEditorArgs<Args>) => void;
+};
+export type SvelteFile<Args extends ArgType> = SvelteFileType<Args> & BaseFile<Args>;
+
+export type JsonFileEditorArgs<Args extends ArgType> = { data: any } & Workspace<Args>;
+export type JsonFileType<Args extends ArgType> = {
+    contentType: "json";
+    content: (editor: JsonFileEditorArgs<Args>) => void;
+};
+export type JsonFile<Args extends ArgType> = JsonFileType<Args> & BaseFile<Args>;
+
+export type HtmlFileEditorArgs<Args extends ArgType> = HtmlAstEditor & Workspace<Args>;
+export type HtmlFileType<Args extends ArgType> = {
+    contentType: "html";
+    content: (editor: HtmlFileEditorArgs<Args>) => void;
+};
+export type HtmlFile<Args extends ArgType> = HtmlFileType<Args> & BaseFile<Args>;
+
+export type CssFileEditorArgs<Args extends ArgType> = CssAstEditor & Workspace<Args>;
+export type CssFileType<Args extends ArgType> = {
+    contentType: "css";
+    content: (editor: CssFileEditorArgs<Args>) => void;
+};
+export type CssFile<Args extends ArgType> = CssFileType<Args> & BaseFile<Args>;
+
+export type FileTypes<Args extends ArgType> =
+    | ScriptFile<Args>
+    | TextFile<Args>
+    | SvelteFile<Args>
+    | JsonFile<Args>
+    | HtmlFile<Args>
+    | CssFile<Args>;
 
 export async function createOrUpdateFiles<Args extends ArgType>(files: FileTypes<Args>[], workspace: Workspace<Args>) {
     for (const fileDetails of files) {

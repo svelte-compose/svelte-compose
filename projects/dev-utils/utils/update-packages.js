@@ -19,7 +19,7 @@ export async function updateComposerPackages() {
 
 /**
  * @param {any} data
- * @param {import("@svelte-compose/core/composer/config").ComposerConfig<Record<string, import("@svelte-compose/core/composer/config").Question>>} composer
+ * @param {import("@svelte-compose/core/composer/config").ComposerConfig<Record<string, import("@svelte-compose/core/composer/options").Question>>} composer
  */
 function updateComposerPackage(data, composer) {
     data.bugs = `${repoUrl}/issues`;

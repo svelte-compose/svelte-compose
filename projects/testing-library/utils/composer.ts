@@ -1,4 +1,5 @@
-import { ArgValues, ComposerWithoutExplicitArgs, Question } from "@svelte-compose/core/composer/config";
+import { ComposerWithoutExplicitArgs } from "@svelte-compose/core/composer/config";
+import { ArgValues, Question } from "@svelte-compose/core/composer/options";
 import { RemoteControlOptions } from "@svelte-compose/core/composer/remoteControl";
 import {
     createEmptyWorkspace,

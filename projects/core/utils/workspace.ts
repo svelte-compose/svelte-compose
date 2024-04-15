@@ -2,7 +2,8 @@ import { AstTypes, parseScript } from "@svelte-compose/ast-tooling";
 import { getPackageJson } from "./common.js";
 import { commonFilePaths, readFile } from "../files/utils.js";
 import { getJsAstEditor } from "@svelte-compose/ast-manipulation";
-import { ArgType, Workspace } from "../composer/config.js";
+import { Workspace } from "../composer/config.js";
+import { ArgType } from "../composer/options.js";
 
 export function createEmptyWorkspace<Args extends ArgType>(): Workspace<Args> {
     return {

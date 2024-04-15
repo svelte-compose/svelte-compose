@@ -1,7 +1,8 @@
 import fs from "fs/promises";
 import path from "node:path";
 import prettier from "prettier";
-import { ArgType, Workspace } from "../composer/config";
+import { Workspace } from "../composer/config";
+import { ArgType } from "../composer/options";
 
 export async function readFile<Args extends ArgType>(workspace: Workspace<Args>, filePath: string) {
     const fullFilePath = getFilePath(workspace.cwd, filePath);

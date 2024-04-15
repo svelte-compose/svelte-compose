@@ -10,8 +10,9 @@ import { getTemplatesDirectory, installDependencies, prepareWorkspaceWithTemplat
 import { runComposer } from "./composer";
 import { textPrompt } from "@svelte-compose/core/internal";
 import * as Throttle from "promise-parallel-throttle";
-import { ArgValues, ComposerWithoutExplicitArgs, Question } from "@svelte-compose/core/composer/config";
+import { ComposerWithoutExplicitArgs } from "@svelte-compose/core/composer/config";
 import { TestOptions } from "..";
+import { ArgValues, Question } from "@svelte-compose/core/composer/options";
 
 export type TestCase = {
     template: string;

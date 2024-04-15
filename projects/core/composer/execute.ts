@@ -4,15 +4,13 @@ import { detectOrCreateProject } from "../utils/create-project.js";
 import { createOrUpdateFiles } from "../files/processors.js";
 import { getPackageJson } from "../utils/common.js";
 import { createEmptyWorkspace, populateWorkspaceDetails } from "../utils/workspace.js";
-import { askQuestionsAndAssignValuesToWorkspace, ensureCorrectOptionTypes, prepareAndParseCliOptions } from "./options.js";
 import {
     ArgType,
-    ComposerCheckConfig,
-    ComposerConfig,
-    PostInstallationCheck,
-    PreInstallationCheck,
-    Workspace,
-} from "./config.js";
+    askQuestionsAndAssignValuesToWorkspace,
+    ensureCorrectOptionTypes,
+    prepareAndParseCliOptions,
+} from "./options.js";
+import { ComposerCheckConfig, ComposerConfig, PostInstallationCheck, PreInstallationCheck, Workspace } from "./config.js";
 import { OptionValues } from "commander";
 import { RemoteControlOptions } from "./remoteControl.js";
 

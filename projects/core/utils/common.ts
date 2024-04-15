@@ -1,4 +1,5 @@
-import { ArgType, Workspace } from "../composer/config.js";
+import { Workspace } from "../composer/config.js";
+import { ArgType } from "../composer/options.js";
 import { commonFilePaths, readFile } from "../files/utils.js";
 
 export type Package = {

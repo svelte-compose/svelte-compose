@@ -1,4 +1,5 @@
-import { ArgValues, ComposerWithoutExplicitArgs, Question, Tests } from "@svelte-compose/core/composer/config";
+import { ComposerWithoutExplicitArgs, Tests } from "@svelte-compose/core/composer/config";
+import { ArgValues, Question } from "@svelte-compose/core/composer/options";
 import { Page } from "puppeteer";
 
 export async function runTests(page: Page, composer: ComposerWithoutExplicitArgs, options: ArgValues<Record<string, Question>>) {
