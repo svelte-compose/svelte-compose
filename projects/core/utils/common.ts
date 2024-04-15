@@ -1,5 +1,5 @@
 import { Workspace } from "../composer/config.js";
-import { ArgType } from "../composer/options.js";
+import { OptionDefinition } from "../composer/options.js";
 import { commonFilePaths, readFile } from "../files/utils.js";
 
 export type Package = {
@@ -9,7 +9,7 @@ export type Package = {
     devDependencies: Record<string, string>;
 };
 
-export async function getPackageJson<Args extends ArgType>(workspace: Workspace<Args>) {
+export async function getPackageJson<Args extends OptionDefinition>(workspace: Workspace<Args>) {
     const packageText = await readFile(workspace, commonFilePaths.packageJsonFilePath);
     if (!packageText) {
         return {

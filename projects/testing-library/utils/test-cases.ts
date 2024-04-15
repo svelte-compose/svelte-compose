@@ -12,12 +12,12 @@ import { textPrompt } from "@svelte-compose/core/internal";
 import * as Throttle from "promise-parallel-throttle";
 import { ComposerWithoutExplicitArgs } from "@svelte-compose/core/composer/config";
 import { TestOptions } from "..";
-import { ArgValues, Question } from "@svelte-compose/core/composer/options";
+import { OptionValues, Question } from "@svelte-compose/core/composer/options";
 
 export type TestCase = {
     template: string;
     composer: ComposerWithoutExplicitArgs;
-    options: ArgValues<Record<string, Question>>;
+    options: OptionValues<Record<string, Question>>;
 };
 
 export async function generateTestCases(composers: ComposerWithoutExplicitArgs[]) {
@@ -40,7 +40,7 @@ export async function generateTestCases(composers: ComposerWithoutExplicitArgs[]
             } else {
                 // if no explicit test cases are defined this composer
                 // presumably does not have any options, so just test the default.
-                const options: ArgValues<Record<string, Question>> = {};
+                const options: OptionValues<Record<string, Question>> = {};
                 composerTestCases.push({ composer, template, options });
             }
         }
@@ -51,7 +51,7 @@ export async function generateTestCases(composers: ComposerWithoutExplicitArgs[]
 export async function runComposerTests(
     template: string,
     composer: ComposerWithoutExplicitArgs,
-    options: ArgValues<Record<string, Question>>,
+    options: OptionValues<Record<string, Question>>,
     testOptions: TestOptions,
 ) {
     if (!composer.tests)

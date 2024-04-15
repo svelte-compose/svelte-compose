@@ -43,7 +43,7 @@ export const tests = defineComposerTests({
 });
 
 /**
- * @template {import("@svelte-compose/core/composer/options").ArgType} Args
+ * @template {import("@svelte-compose/core/composer/options").OptionDefinition} Args
  * @param {import("@svelte-compose/core/files/processors.js").TextFileEditorArgs<Args>} editor
  */
 function addMarkdownFile(editor) {
@@ -65,7 +65,7 @@ Markdown is pretty good but sometimes you just need more.
 }
 
 /**
- * @template {import("@svelte-compose/core/composer/options").ArgType} Args
+ * @template {import("@svelte-compose/core/composer/options").OptionDefinition} Args
  * @param {import("@svelte-compose/core/files/processors.js").SvelteFileEditorArgs<Args>} editor
  */
 function useMarkdownFile({ js, html }) {

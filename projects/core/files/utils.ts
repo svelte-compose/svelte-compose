@@ -2,9 +2,9 @@ import fs from "fs/promises";
 import path from "node:path";
 import prettier from "prettier";
 import { Workspace } from "../composer/config";
-import { ArgType } from "../composer/options";
+import { OptionDefinition } from "../composer/options";
 
-export async function readFile<Args extends ArgType>(workspace: Workspace<Args>, filePath: string) {
+export async function readFile<Args extends OptionDefinition>(workspace: Workspace<Args>, filePath: string) {
     const fullFilePath = getFilePath(workspace.cwd, filePath);
 
     if (!(await fileExistsWorkspace(workspace, filePath))) {
@@ -17,7 +17,7 @@ export async function readFile<Args extends ArgType>(workspace: Workspace<Args>,
     return text;
 }
 
-export async function writeFile<Args extends ArgType>(workspace: Workspace<Args>, filePath: string, content: string) {
+export async function writeFile<Args extends OptionDefinition>(workspace: Workspace<Args>, filePath: string, content: string) {
     const fullFilePath = getFilePath(workspace.cwd, filePath);
     const fullDirectoryPath = path.dirname(fullFilePath);
 
@@ -28,7 +28,7 @@ export async function writeFile<Args extends ArgType>(workspace: Workspace<Args>
     await fs.writeFile(fullFilePath, content);
 }
 
-export async function fileExistsWorkspace<Args extends ArgType>(workspace: Workspace<Args>, filePath: string) {
+export async function fileExistsWorkspace<Args extends OptionDefinition>(workspace: Workspace<Args>, filePath: string) {
     const fullFilePath = getFilePath(workspace.cwd, filePath);
     return await fileExists(fullFilePath);
 }
@@ -50,7 +50,7 @@ export function getFilePath(cwd: string, fileName: string) {
     return path.join(cwd, fileName);
 }
 
-export async function format<Args extends ArgType>(workspace: Workspace<Args>, path: string, content: string) {
+export async function format<Args extends OptionDefinition>(workspace: Workspace<Args>, path: string, content: string) {
     const fullPath = getFilePath(workspace.cwd, path);
     return await formatFileWithPrettier(fullPath, content);
 }

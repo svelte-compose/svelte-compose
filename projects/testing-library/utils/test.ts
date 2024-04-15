@@ -1,8 +1,12 @@
 import { ComposerWithoutExplicitArgs, Tests } from "@svelte-compose/core/composer/config";
-import { ArgValues, Question } from "@svelte-compose/core/composer/options";
+import { OptionValues, Question } from "@svelte-compose/core/composer/options";
 import { Page } from "puppeteer";
 
-export async function runTests(page: Page, composer: ComposerWithoutExplicitArgs, options: ArgValues<Record<string, Question>>) {
+export async function runTests(
+    page: Page,
+    composer: ComposerWithoutExplicitArgs,
+    options: OptionValues<Record<string, Question>>,
+) {
     const tests: Tests = {
         expectProperty: async (selector, property, expectedValue) => {
             await expectProperty(page, selector, property, expectedValue);
@@ -24,7 +28,7 @@ export async function runTests(page: Page, composer: ComposerWithoutExplicitArgs
 async function executeComposerTests(
     composer: ComposerWithoutExplicitArgs,
     testMethods: Tests,
-    options: ArgValues<Record<string, Question>>,
+    options: OptionValues<Record<string, Question>>,
 ) {
     if (!composer.tests || !composer.tests.tests || composer.tests.tests.length == 0)
         throw new Error(`Cannot test composer without tests!`);

@@ -2,7 +2,7 @@ import { CssAstEditor, HtmlAstEditor, JsAstEditor, SvelteAstEditor } from "@svel
 import { executeComposer } from "./execute.js";
 import * as remoteControl from "./remoteControl.js";
 import { CategoryInfo } from "./categories.js";
-import { ArgType, ArgValues, Question } from "./options.js";
+import { OptionDefinition, OptionValues, Question } from "./options.js";
 import { FileTypes } from "../files/processors.js";
 
 export { CssAstEditor, HtmlAstEditor, JsAstEditor, SvelteAstEditor };
@@ -23,15 +23,15 @@ export type SvelteKitData = {
     routesDirectory: string;
 };
 
-export type Workspace<Args extends ArgType> = {
-    options: ArgValues<Args>;
+export type Workspace<Args extends OptionDefinition> = {
+    options: OptionValues<Args>;
     cwd: string;
     prettier: PrettierData;
     typescript: TypescriptData;
     kit: SvelteKitData;
 };
 
-export type ConditionDefinition<Args extends ArgType> = (Workspace: Workspace<Args>) => boolean;
+export type ConditionDefinition<Args extends OptionDefinition> = (Workspace: Workspace<Args>) => boolean;
 
 export type WebsiteMetadata = {
     logo: string;
@@ -55,14 +55,14 @@ export type ComposerConfigMetadata = {
     website?: WebsiteMetadata;
 };
 
-export type PackageDefinition<Args extends ArgType> = {
+export type PackageDefinition<Args extends OptionDefinition> = {
     name: string;
     version: string;
     dev: boolean;
     condition?: ConditionDefinition<Args>;
 };
 
-export type ComposerConfig<Args extends ArgType> = {
+export type ComposerConfig<Args extends OptionDefinition> = {
     metadata: ComposerConfigMetadata;
     options: Args;
     packages: PackageDefinition<Args>[];
@@ -71,11 +71,11 @@ export type ComposerConfig<Args extends ArgType> = {
     uninstallHook?: (workspace: Workspace<Args>) => Promise<void>;
 };
 
-export function defineComposerConfig<Args extends ArgType>(config: ComposerConfig<Args>) {
+export function defineComposerConfig<Args extends OptionDefinition>(config: ComposerConfig<Args>) {
     return config;
 }
 
-export type Composer<Args extends ArgType> = {
+export type Composer<Args extends OptionDefinition> = {
     config: ComposerConfig<Args>;
     checks: ComposerCheckConfig<Args>;
     tests?: ComposerTestConfig<Args>;
@@ -83,7 +83,7 @@ export type Composer<Args extends ArgType> = {
 
 export type ComposerWithoutExplicitArgs = Composer<Record<string, Question>>;
 
-export function defineComposer<Args extends ArgType>(
+export function defineComposer<Args extends OptionDefinition>(
     config: ComposerConfig<Args>,
     checks: ComposerCheckConfig<Args>,
     tests?: ComposerTestConfig<Args>,
@@ -104,24 +104,24 @@ export type Tests = {
     expectUrlPath: (path: string) => Promise<void>;
 };
 
-export type TestDefinition<Args extends ArgType> = {
+export type TestDefinition<Args extends OptionDefinition> = {
     name: string;
     run: (tests: Tests) => Promise<void>;
-    condition?: (options: ArgValues<Args>) => boolean;
+    condition?: (options: OptionValues<Args>) => boolean;
 };
 
-export type ComposerTestConfig<Args extends ArgType> = {
+export type ComposerTestConfig<Args extends OptionDefinition> = {
     files: FileTypes<Args>[];
     tests: TestDefinition<Args>[];
     options: Args;
-    optionValues: ArgValues<Args>[];
+    optionValues: OptionValues<Args>[];
 };
 
-export function defineComposerTests<Args extends ArgType>(tests: ComposerTestConfig<Args>) {
+export function defineComposerTests<Args extends OptionDefinition>(tests: ComposerTestConfig<Args>) {
     return tests;
 }
 
-export function defineComposerOptions<Args extends ArgType>(options: Args) {
+export function defineComposerOptions<Args extends OptionDefinition>(options: Args) {
     return options;
 }
 
@@ -130,17 +130,17 @@ export type PreInstallationCheck = {
     run: (workingDirectory: string) => boolean;
 };
 
-export type PostInstallationCheck<Args extends ArgType> = {
+export type PostInstallationCheck<Args extends OptionDefinition> = {
     name: string;
     run: (workingDirectory: string) => boolean;
 };
 
-export type ComposerCheckConfig<Args extends ArgType> = {
+export type ComposerCheckConfig<Args extends OptionDefinition> = {
     preInstallation?: PreInstallationCheck[];
     postInstallation: PostInstallationCheck<Args>[];
     options: Args;
 };
 
-export function defineComposerChecks<Args extends ArgType>(checks: ComposerCheckConfig<Args>) {
+export function defineComposerChecks<Args extends OptionDefinition>(checks: ComposerCheckConfig<Args>) {
     return checks;
 }

@@ -3,9 +3,9 @@ import { getPackageJson } from "./common.js";
 import { commonFilePaths, readFile } from "../files/utils.js";
 import { getJsAstEditor } from "@svelte-compose/ast-manipulation";
 import { Workspace } from "../composer/config.js";
-import { ArgType } from "../composer/options.js";
+import { OptionDefinition } from "../composer/options.js";
 
-export function createEmptyWorkspace<Args extends ArgType>(): Workspace<Args> {
+export function createEmptyWorkspace<Args extends OptionDefinition>(): Workspace<Args> {
     return {
         // @ts-expect-error
         options: {},
@@ -26,7 +26,7 @@ export function createEmptyWorkspace<Args extends ArgType>(): Workspace<Args> {
     };
 }
 
-export function addPropertyToWorkspaceOption<Args extends ArgType>(
+export function addPropertyToWorkspaceOption<Args extends OptionDefinition>(
     workspace: Workspace<Args>,
     optionKey: string,
     value: unknown,
@@ -47,7 +47,10 @@ export function addPropertyToWorkspaceOption<Args extends ArgType>(
     });
 }
 
-export async function populateWorkspaceDetails<Args extends ArgType>(workspace: Workspace<Args>, workingDirectory: string) {
+export async function populateWorkspaceDetails<Args extends OptionDefinition>(
+    workspace: Workspace<Args>,
+    workingDirectory: string,
+) {
     workspace.cwd = workingDirectory;
 
     const packageJson = await getPackageJson(workspace);
@@ -58,7 +61,7 @@ export async function populateWorkspaceDetails<Args extends ArgType>(workspace: 
     await parseSvelteConfigIntoWorkspace(workspace);
 }
 
-export async function parseSvelteConfigIntoWorkspace<Args extends ArgType>(workspace: Workspace<Args>) {
+export async function parseSvelteConfigIntoWorkspace<Args extends OptionDefinition>(workspace: Workspace<Args>) {
     if (!workspace.kit.installed) return;
     const configText = await readFile(workspace, commonFilePaths.svelteConfigFilePath);
     const ast = parseScript(configText);

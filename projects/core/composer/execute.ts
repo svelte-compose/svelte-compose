@@ -5,7 +5,7 @@ import { createOrUpdateFiles } from "../files/processors.js";
 import { getPackageJson } from "../utils/common.js";
 import { createEmptyWorkspace, populateWorkspaceDetails } from "../utils/workspace.js";
 import {
-    ArgType,
+    OptionDefinition,
     askQuestionsAndAssignValuesToWorkspace,
     ensureCorrectOptionTypes,
     prepareAndParseCliOptions,
@@ -14,7 +14,7 @@ import { ComposerCheckConfig, ComposerConfig, PostInstallationCheck, PreInstalla
 import { OptionValues } from "commander";
 import { RemoteControlOptions } from "./remoteControl.js";
 
-export async function executeComposer<Args extends ArgType>(
+export async function executeComposer<Args extends OptionDefinition>(
     config: ComposerConfig<Args>,
     checks: ComposerCheckConfig<Args>,
     remoteControlOptions: RemoteControlOptions = undefined,
@@ -60,7 +60,10 @@ export function determineWorkingDirectory(options: OptionValues) {
     return cwd;
 }
 
-export async function installPackages<Args extends ArgType>(config: ComposerConfig<ArgType>, workspace: Workspace<Args>) {
+export async function installPackages<Args extends OptionDefinition>(
+    config: ComposerConfig<OptionDefinition>,
+    workspace: Workspace<Args>,
+) {
     const content = await getPackageJson(workspace);
 
     for (const dependency of config.packages) {
@@ -87,7 +90,7 @@ export async function installPackages<Args extends ArgType>(config: ComposerConf
     await writeFile(workspace, commonFilePaths.packageJsonFilePath, packageText);
 }
 
-function runHooks<Args extends ArgType>(config: ComposerConfig<Args>, workspace: Workspace<Args>, isInstall: boolean) {
+function runHooks<Args extends OptionDefinition>(config: ComposerConfig<Args>, workspace: Workspace<Args>, isInstall: boolean) {
     if (isInstall && config.installHook) config.installHook(workspace);
     else if (!isInstall && config.uninstallHook) config.uninstallHook(workspace);
 }
@@ -107,6 +110,6 @@ export async function runPreInstallationChecks(checks: PreInstallationCheck[]) {
     // console.log(checks);
 }
 
-export async function runPostInstallationChecks<Args extends ArgType>(checks: PostInstallationCheck<Args>[]) {
+export async function runPostInstallationChecks<Args extends OptionDefinition>(checks: PostInstallationCheck<Args>[]) {
     // console.log(checks);
 }

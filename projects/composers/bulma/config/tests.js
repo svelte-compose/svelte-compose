@@ -46,7 +46,7 @@ export const tests = defineComposerTests({
 });
 
 /**
- * @template {import("@svelte-compose/core/composer/options.js").ArgType} Args
+ * @template {import("@svelte-compose/core/composer/options.js").OptionDefinition} Args
  * @param {import("@svelte-compose/core/files/processors.js").SvelteFileEditorArgs<Args>} editor
  */
 function prepareBoxTest({ html }) {
@@ -55,7 +55,7 @@ function prepareBoxTest({ html }) {
 }
 
 /**
- * @template {import("@svelte-compose/core/composer/options.js").ArgType} Args
+ * @template {import("@svelte-compose/core/composer/options.js").OptionDefinition} Args
  * @param {import("@svelte-compose/core/files/processors.js").SvelteFileEditorArgs<Args>} editor
  */
 function prepareFormTest({ html }) {
@@ -69,7 +69,7 @@ function prepareFormTest({ html }) {
 }
 
 /**
- * @template {import("@svelte-compose/core/composer/options.js").ArgType} Args
+ * @template {import("@svelte-compose/core/composer/options.js").OptionDefinition} Args
  * @param {import("@svelte-compose/core/files/processors.js").SvelteFileEditorArgs<Args>} editor
  */
 function prepareTests(editor) {

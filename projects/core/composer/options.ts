@@ -27,8 +27,8 @@ export type StringQuestion = BaseQuestion & StringDefaultValue;
 export type NumberQuestion = BaseQuestion & NumberDefaultValue;
 export type Question = BooleanQuestion | StringQuestion | NumberQuestion;
 
-export type ArgType = Record<string, Question>;
-export type ArgValues<Args extends ArgType> = {
+export type OptionDefinition = Record<string, Question>;
+export type OptionValues<Args extends OptionDefinition> = {
     [K in keyof Args]: Args[K]["type"] extends "string"
         ? string
         : Args[K]["type"] extends "boolean"
@@ -38,7 +38,7 @@ export type ArgValues<Args extends ArgType> = {
             : never;
 };
 
-export function prepareAndParseCliOptions<Args extends ArgType>(config: ComposerConfig<Args>) {
+export function prepareAndParseCliOptions<Args extends OptionDefinition>(config: ComposerConfig<Args>) {
     program.option("--path <string>", "Path to working directory");
 
     if (config.options) {
@@ -54,7 +54,7 @@ export function prepareAndParseCliOptions<Args extends ArgType>(config: Composer
     return options;
 }
 
-export async function askQuestionsAndAssignValuesToWorkspace<Args extends ArgType>(
+export async function askQuestionsAndAssignValuesToWorkspace<Args extends OptionDefinition>(
     config: ComposerConfig<Args>,
     workspace: Workspace<Args>,
     cliOptions: OptionValues,
@@ -98,7 +98,10 @@ export async function askQuestionsAndAssignValuesToWorkspace<Args extends ArgTyp
     }
 }
 
-export function ensureCorrectOptionTypes<Args extends ArgType>(config: ComposerConfig<Args>, workspace: Workspace<Args>) {
+export function ensureCorrectOptionTypes<Args extends OptionDefinition>(
+    config: ComposerConfig<Args>,
+    workspace: Workspace<Args>,
+) {
     if (!config.options) {
         return;
     }

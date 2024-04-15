@@ -1,5 +1,5 @@
 import { ComposerWithoutExplicitArgs } from "@svelte-compose/core/composer/config";
-import { ArgValues, Question } from "@svelte-compose/core/composer/options";
+import { OptionValues, Question } from "@svelte-compose/core/composer/options";
 import { RemoteControlOptions } from "@svelte-compose/core/composer/remoteControl";
 import {
     createEmptyWorkspace,
@@ -11,7 +11,7 @@ import {
 export async function runComposer(
     composer: ComposerWithoutExplicitArgs,
     workingDirectory: string,
-    optionValues: ArgValues<Record<string, Question>>,
+    optionValues: OptionValues<Record<string, Question>>,
 ) {
     const remoteControlledOptions: RemoteControlOptions = { workingDirectory, optionValues };
 
