@@ -1,6 +1,6 @@
 {
     "name": "@svelte-compose/tailwindcss",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "bin": "build/index.js",
     "type": "module",
     "license": "MIT",
