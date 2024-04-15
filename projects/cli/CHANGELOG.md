@@ -1,5 +1,20 @@
 # @svelte-compose/cli
 
+## 2.0.4
+
+### Patch Changes
+
+- move types to it's appropriate locations ([`ce0e41c87f19b9b6923b41add7b22c1f77afbc3a`](https://github.com/svelte-compose/svelte-compose/commit/ce0e41c87f19b9b6923b41add7b22c1f77afbc3a))
+
+- Updated dependencies [[`ce0e41c87f19b9b6923b41add7b22c1f77afbc3a`](https://github.com/svelte-compose/svelte-compose/commit/ce0e41c87f19b9b6923b41add7b22c1f77afbc3a)]:
+  - @svelte-compose/tailwindcss@0.2.4
+  - @svelte-compose/mdsvex@0.3.4
+  - @svelte-compose/bulma@0.2.4
+  - @svelte-compose/core@0.2.3
+  - @svelte-compose/bootstrap@0.1.4
+  - @svelte-compose/routify@0.2.4
+  - @svelte-compose/threlte@0.0.4
+
 ## 2.0.3
 
 ### Patch Changes
