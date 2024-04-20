@@ -1,7 +1,6 @@
 import { spawn } from "child_process";
 import { cp, mkdir, rm, writeFile } from "fs/promises";
 import { join } from "path";
-import { downloadProjectTemplates } from "./create-project";
 import { TestOptions } from "..";
 
 const templatesDirectory = "templates";
@@ -18,7 +17,7 @@ export async function installDependencies(output: string): Promise<void> {
             if (code == 0) {
                 resolve();
             } else {
-                throw new Error("unable to instal dependencies");
+                throw new Error("unable to install dependencies");
             }
         });
     });

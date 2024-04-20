@@ -3,7 +3,7 @@ import { commonFilePaths, format, writeFile } from "../files/utils.js";
 import { detectOrCreateProject } from "../utils/create-project.js";
 import { createOrUpdateFiles } from "../files/processors.js";
 import { getPackageJson } from "../utils/common.js";
-import { Workspace, WorkspaceWithoutExplicitArgs, createEmptyWorkspace, populateWorkspaceDetails } from "../utils/workspace.js";
+import { WorkspaceWithoutExplicitArgs, createEmptyWorkspace, populateWorkspaceDetails } from "../utils/workspace.js";
 import {
     OptionDefinition,
     askQuestionsAndAssignValuesToWorkspace,
@@ -19,6 +19,7 @@ import {
 } from "./config.js";
 import { OptionValues } from "commander";
 import { RemoteControlOptions } from "./remoteControl.js";
+import { suggestInstallingDependencies } from "../utils/dependencies.js";
 
 export async function executeComposer<Args extends OptionDefinition>(
     config: ComposerConfig<Args>,
@@ -55,6 +56,8 @@ export async function executeComposer<Args extends OptionDefinition>(
     await runHooks(config, workspace, isInstall);
 
     await runPostInstallationChecks(checks.postInstallation);
+
+    await suggestInstallingDependencies(workingDirectory);
 }
 
 export function determineWorkingDirectory(options: OptionValues) {
