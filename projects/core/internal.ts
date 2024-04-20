@@ -4,6 +4,7 @@ import { createOrUpdateFiles } from "./files/processors.js";
 import { createEmptyWorkspace, populateWorkspaceDetails } from "./utils/workspace.js";
 import { detectOrCreateProject } from "./utils/create-project.js";
 import { PromptOption, endPrompts, multiSelectPrompt, textPrompt, startPrompts } from "./utils/prompts.js";
+import { suggestInstallingDependencies } from "./utils/dependencies.js";
 
 export {
     remoteControl,
@@ -18,4 +19,5 @@ export {
     multiSelectPrompt,
     textPrompt,
     startPrompts,
+    suggestInstallingDependencies,
 };
