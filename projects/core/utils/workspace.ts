@@ -2,12 +2,36 @@ import { AstTypes, parseScript } from "@svelte-compose/ast-tooling";
 import { getPackageJson } from "./common.js";
 import { commonFilePaths, readFile } from "../files/utils.js";
 import { getJsAstEditor } from "@svelte-compose/ast-manipulation";
-import { Workspace } from "../composer/config.js";
-import { OptionDefinition } from "../composer/options.js";
+import { OptionDefinition, OptionValues, Question } from "../composer/options.js";
 
-export function createEmptyWorkspace<Args extends OptionDefinition>(): Workspace<Args> {
+export type PrettierData = {
+    installed: boolean;
+    config: unknown;
+};
+
+export type TypescriptData = {
+    installed: boolean;
+    config: unknown;
+};
+
+export type SvelteKitData = {
+    installed: boolean;
+    libDirectory: string;
+    routesDirectory: string;
+};
+
+export type Workspace<Args extends OptionDefinition> = {
+    options: OptionValues<Args>;
+    cwd: string;
+    prettier: PrettierData;
+    typescript: TypescriptData;
+    kit: SvelteKitData;
+};
+
+export type WorkspaceWithoutExplicitArgs = Workspace<Record<string, Question>>;
+
+export function createEmptyWorkspace(): WorkspaceWithoutExplicitArgs {
     return {
-        // @ts-expect-error
         options: {},
         cwd: "",
         prettier: {
@@ -26,11 +50,7 @@ export function createEmptyWorkspace<Args extends OptionDefinition>(): Workspace
     };
 }
 
-export function addPropertyToWorkspaceOption<Args extends OptionDefinition>(
-    workspace: Workspace<Args>,
-    optionKey: string,
-    value: unknown,
-) {
+export function addPropertyToWorkspaceOption(workspace: WorkspaceWithoutExplicitArgs, optionKey: string, value: unknown) {
     if (value === "true") {
         value = true;
     }
@@ -47,10 +67,7 @@ export function addPropertyToWorkspaceOption<Args extends OptionDefinition>(
     });
 }
 
-export async function populateWorkspaceDetails<Args extends OptionDefinition>(
-    workspace: Workspace<Args>,
-    workingDirectory: string,
-) {
+export async function populateWorkspaceDetails(workspace: WorkspaceWithoutExplicitArgs, workingDirectory: string) {
     workspace.cwd = workingDirectory;
 
     const packageJson = await getPackageJson(workspace);
@@ -61,7 +78,7 @@ export async function populateWorkspaceDetails<Args extends OptionDefinition>(
     await parseSvelteConfigIntoWorkspace(workspace);
 }
 
-export async function parseSvelteConfigIntoWorkspace<Args extends OptionDefinition>(workspace: Workspace<Args>) {
+export async function parseSvelteConfigIntoWorkspace(workspace: WorkspaceWithoutExplicitArgs) {
     if (!workspace.kit.installed) return;
     const configText = await readFile(workspace, commonFilePaths.svelteConfigFilePath);
     const ast = parseScript(configText);

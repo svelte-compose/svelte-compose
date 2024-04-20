@@ -4,34 +4,12 @@ import * as remoteControl from "./remoteControl.js";
 import { CategoryInfo } from "./categories.js";
 import { OptionDefinition, OptionValues, Question } from "./options.js";
 import { FileTypes } from "../files/processors.js";
+import { Workspace } from "../utils/workspace.js";
 
 export { CssAstEditor, HtmlAstEditor, JsAstEditor, SvelteAstEditor };
 
-export type PrettierData = {
-    installed: boolean;
-    config: unknown;
-};
-
-export type TypescriptData = {
-    installed: boolean;
-    config: unknown;
-};
-
-export type SvelteKitData = {
-    installed: boolean;
-    libDirectory: string;
-    routesDirectory: string;
-};
-
-export type Workspace<Args extends OptionDefinition> = {
-    options: OptionValues<Args>;
-    cwd: string;
-    prettier: PrettierData;
-    typescript: TypescriptData;
-    kit: SvelteKitData;
-};
-
 export type ConditionDefinition<Args extends OptionDefinition> = (Workspace: Workspace<Args>) => boolean;
+export type ConditionDefinitionWithoutExplicitArgs = ConditionDefinition<Record<string, Question>>;
 
 export type WebsiteMetadata = {
     logo: string;
@@ -82,6 +60,7 @@ export type Composer<Args extends OptionDefinition> = {
 };
 
 export type ComposerWithoutExplicitArgs = Composer<Record<string, Question>>;
+export type ComposerConfigWithoutExplicitArgs = ComposerConfig<Record<string, Question>>;
 
 export function defineComposer<Args extends OptionDefinition>(
     config: ComposerConfig<Args>,
@@ -130,14 +109,14 @@ export type PreInstallationCheck = {
     run: (workingDirectory: string) => boolean;
 };
 
-export type PostInstallationCheck<Args extends OptionDefinition> = {
+export type PostInstallationCheck = {
     name: string;
     run: (workingDirectory: string) => boolean;
 };
 
 export type ComposerCheckConfig<Args extends OptionDefinition> = {
     preInstallation?: PreInstallationCheck[];
-    postInstallation: PostInstallationCheck<Args>[];
+    postInstallation: PostInstallationCheck[];
     options: Args;
 };
 

@@ -20,8 +20,9 @@ import {
     serializeSvelteFile,
 } from "@svelte-compose/ast-tooling";
 import { fileExistsWorkspace, format, readFile, writeFile } from "./utils.js";
-import { ConditionDefinition, Workspace } from "../composer/config.js";
+import { ConditionDefinition } from "../composer/config.js";
 import { OptionDefinition } from "../composer/options.js";
+import { Workspace } from "../utils/workspace.js";
 
 export type BaseFile<Args extends OptionDefinition> = {
     name: (options: Workspace<Args>) => string;

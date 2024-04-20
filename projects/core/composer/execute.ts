@@ -3,14 +3,20 @@ import { commonFilePaths, format, writeFile } from "../files/utils.js";
 import { detectOrCreateProject } from "../utils/create-project.js";
 import { createOrUpdateFiles } from "../files/processors.js";
 import { getPackageJson } from "../utils/common.js";
-import { createEmptyWorkspace, populateWorkspaceDetails } from "../utils/workspace.js";
+import { Workspace, WorkspaceWithoutExplicitArgs, createEmptyWorkspace, populateWorkspaceDetails } from "../utils/workspace.js";
 import {
     OptionDefinition,
     askQuestionsAndAssignValuesToWorkspace,
     ensureCorrectOptionTypes,
     prepareAndParseCliOptions,
 } from "./options.js";
-import { ComposerCheckConfig, ComposerConfig, PostInstallationCheck, PreInstallationCheck, Workspace } from "./config.js";
+import {
+    ComposerCheckConfig,
+    ComposerConfig,
+    ComposerConfigWithoutExplicitArgs,
+    PostInstallationCheck,
+    PreInstallationCheck,
+} from "./config.js";
 import { OptionValues } from "commander";
 import { RemoteControlOptions } from "./remoteControl.js";
 
@@ -60,10 +66,7 @@ export function determineWorkingDirectory(options: OptionValues) {
     return cwd;
 }
 
-export async function installPackages<Args extends OptionDefinition>(
-    config: ComposerConfig<OptionDefinition>,
-    workspace: Workspace<Args>,
-) {
+export async function installPackages(config: ComposerConfig<OptionDefinition>, workspace: WorkspaceWithoutExplicitArgs) {
     const content = await getPackageJson(workspace);
 
     for (const dependency of config.packages) {
@@ -90,7 +93,7 @@ export async function installPackages<Args extends OptionDefinition>(
     await writeFile(workspace, commonFilePaths.packageJsonFilePath, packageText);
 }
 
-function runHooks<Args extends OptionDefinition>(config: ComposerConfig<Args>, workspace: Workspace<Args>, isInstall: boolean) {
+function runHooks(config: ComposerConfigWithoutExplicitArgs, workspace: WorkspaceWithoutExplicitArgs, isInstall: boolean) {
     if (isInstall && config.installHook) config.installHook(workspace);
     else if (!isInstall && config.uninstallHook) config.uninstallHook(workspace);
 }
@@ -110,6 +113,6 @@ export async function runPreInstallationChecks(checks: PreInstallationCheck[]) {
     // console.log(checks);
 }
 
-export async function runPostInstallationChecks<Args extends OptionDefinition>(checks: PostInstallationCheck<Args>[]) {
+export async function runPostInstallationChecks(checks: PostInstallationCheck[]) {
     // console.log(checks);
 }

@@ -1,7 +1,7 @@
-import { OptionValues, program } from "commander";
+import { OptionValues as CliOptionValues, program } from "commander";
 import { booleanPrompt, endPrompts, startPrompts, textPrompt } from "../utils/prompts.js";
-import { addPropertyToWorkspaceOption } from "../utils/workspace.js";
-import { ComposerConfig, Workspace } from "./config.js";
+import { Workspace, WorkspaceWithoutExplicitArgs, addPropertyToWorkspaceOption } from "../utils/workspace.js";
+import { ComposerConfig, ComposerConfigWithoutExplicitArgs } from "./config.js";
 
 export type BooleanDefaultValue = {
     type: "boolean";
@@ -38,7 +38,7 @@ export type OptionValues<Args extends OptionDefinition> = {
             : never;
 };
 
-export function prepareAndParseCliOptions<Args extends OptionDefinition>(config: ComposerConfig<Args>) {
+export function prepareAndParseCliOptions(config: ComposerConfigWithoutExplicitArgs) {
     program.option("--path <string>", "Path to working directory");
 
     if (config.options) {
@@ -54,10 +54,10 @@ export function prepareAndParseCliOptions<Args extends OptionDefinition>(config:
     return options;
 }
 
-export async function askQuestionsAndAssignValuesToWorkspace<Args extends OptionDefinition>(
-    config: ComposerConfig<Args>,
-    workspace: Workspace<Args>,
-    cliOptions: OptionValues,
+export async function askQuestionsAndAssignValuesToWorkspace(
+    config: ComposerConfigWithoutExplicitArgs,
+    workspace: WorkspaceWithoutExplicitArgs,
+    cliOptions: CliOptionValues,
 ) {
     if (!config.options) return;
 
@@ -98,10 +98,7 @@ export async function askQuestionsAndAssignValuesToWorkspace<Args extends Option
     }
 }
 
-export function ensureCorrectOptionTypes<Args extends OptionDefinition>(
-    config: ComposerConfig<Args>,
-    workspace: Workspace<Args>,
-) {
+export function ensureCorrectOptionTypes(config: ComposerConfigWithoutExplicitArgs, workspace: WorkspaceWithoutExplicitArgs) {
     if (!config.options) {
         return;
     }
