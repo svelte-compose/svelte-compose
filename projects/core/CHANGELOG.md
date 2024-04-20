@@ -1,5 +1,15 @@
 # @svelte-compose/core
 
+## 0.3.0
+
+### Minor Changes
+
+- suggest installing dependencies ([#20](https://github.com/svelte-compose/svelte-compose/pull/20))
+
+### Patch Changes
+
+- better types ([`2c59c624eeb8f1946a67c2ff3f2a67fad5fa23c0`](https://github.com/svelte-compose/svelte-compose/commit/2c59c624eeb8f1946a67c2ff3f2a67fad5fa23c0))
+
 ## 0.2.3
 
 ### Patch Changes

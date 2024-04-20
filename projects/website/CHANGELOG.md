@@ -1,5 +1,13 @@
 # @svelte-compose/website
 
+## 0.2.6
+
+### Patch Changes
+
+- Updated dependencies [[`d82f745bcaea3c217521fcdeea65dd9c997ba535`](https://github.com/svelte-compose/svelte-compose/commit/d82f745bcaea3c217521fcdeea65dd9c997ba535), [`2c59c624eeb8f1946a67c2ff3f2a67fad5fa23c0`](https://github.com/svelte-compose/svelte-compose/commit/2c59c624eeb8f1946a67c2ff3f2a67fad5fa23c0), [`d82f745bcaea3c217521fcdeea65dd9c997ba535`](https://github.com/svelte-compose/svelte-compose/commit/d82f745bcaea3c217521fcdeea65dd9c997ba535)]:
+  - @svelte-compose/core@0.3.0
+  - @svelte-compose/cli@2.1.0
+
 ## 0.2.5
 
 ### Patch Changes

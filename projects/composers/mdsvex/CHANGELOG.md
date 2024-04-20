@@ -1,5 +1,12 @@
 # @svelte-compose/mdsvex
 
+## 0.3.5
+
+### Patch Changes
+
+- Updated dependencies [[`d82f745bcaea3c217521fcdeea65dd9c997ba535`](https://github.com/svelte-compose/svelte-compose/commit/d82f745bcaea3c217521fcdeea65dd9c997ba535), [`2c59c624eeb8f1946a67c2ff3f2a67fad5fa23c0`](https://github.com/svelte-compose/svelte-compose/commit/2c59c624eeb8f1946a67c2ff3f2a67fad5fa23c0)]:
+  - @svelte-compose/core@0.3.0
+
 ## 0.3.4
 
 ### Patch Changes
