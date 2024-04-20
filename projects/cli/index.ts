@@ -9,6 +9,7 @@ import {
     determineWorkingDirectory,
     executeComposer,
     remoteControl,
+    suggestInstallingDependencies,
 } from "@svelte-compose/core/internal";
 import { getComposerList, groupBy } from "./website";
 import { program } from "commander";
@@ -63,6 +64,8 @@ async function executeCli() {
 
         await executeComposer(composer.config, composer.checks, remoteControlledOptions);
     }
+
+    await suggestInstallingDependencies(workingDirectory);
 
     remoteControl.disable();
 }

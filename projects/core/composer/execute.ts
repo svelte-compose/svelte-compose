@@ -57,7 +57,7 @@ export async function executeComposer<Args extends OptionDefinition>(
 
     await runPostInstallationChecks(checks.postInstallation);
 
-    await suggestInstallingDependencies(workingDirectory);
+    if (!remoteControlled) await suggestInstallingDependencies(workingDirectory);
 }
 
 export function determineWorkingDirectory(options: OptionValues) {

@@ -1,13 +1,9 @@
-import { spawn, spawnSync } from "child_process";
+import { spawn } from "child_process";
 import { endPrompts, selectPrompt, startPrompts } from "./prompts";
 import preferredPackageManager from "preferred-pm";
 import { spinner, note } from "@clack/prompts";
-import { remoteControl } from "../internal";
 
 export async function suggestInstallingDependencies(workingDirectory: string) {
-    const remoteControlled = remoteControl.isRemoteControlled();
-    if (remoteControlled) return;
-
     const detectedPm = await preferredPackageManager(workingDirectory);
     const packageManagers = {
         npm: "npm install",
