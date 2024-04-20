@@ -1,6 +1,6 @@
 {
     "name": "@svelte-compose/bootstrap",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "bin": "build/index.js",
     "type": "module",
     "license": "MIT",
