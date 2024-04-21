@@ -17,7 +17,8 @@
         "@svelte-compose/mdsvex": "workspace:^",
         "@svelte-compose/routify": "workspace:^",
         "@svelte-compose/tailwindcss": "workspace:^",
-        "@svelte-compose/threlte": "workspace:^"
+        "@svelte-compose/threlte": "workspace:^",
+        "@svelte-compose/cli": "workspace:^"
     },
     "devDependencies": {
         "commander": "^12.0.0"
