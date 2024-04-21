@@ -140,7 +140,7 @@ export const composer = defineComposerConfig({
                 return (
                     content +
                     `<script>
-                        import { Meta, Story, Template } from '@storybook/addon-svelte-csf;
+                        import { Meta, Story, Template } from '@storybook/addon-svelte-csf';
                       
                         import Button from './Button.svelte';
                       
