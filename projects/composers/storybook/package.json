@@ -13,10 +13,12 @@
         "url": "https://github.com/svelte-compose/svelte-compose/tree/main/projects/composers/storybook"
     },
     "keywords": [
-        "bootstrap",
-        "css",
-        "sass",
-        "scss",
+        "storybook",
+        "styling",
+        "testing",
+        "documentation",
+        "storybook-svelte-csf",
+        "svelte-csf",
         "svelte",
         "kit",
         "svelte-kit"

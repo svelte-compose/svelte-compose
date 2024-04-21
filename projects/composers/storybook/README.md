@@ -3,9 +3,9 @@
     <img src="https://svelte-compose.com/composer/storybook/logo.svg" height="50" />
 </p>
 
-# Bootstrap
+# Storybook
 
-> This is a composer for [svelte-compose](https://svelte-compose.com) and is used to add Bootstrap to your svelte/kit project.
+> This is a composer for [svelte-compose](https://svelte-compose.com) and is used to add Storybook to your svelte/kit project.
 
 You can find all options for this composer on [this site](https://svelte-compose.com/composer/storybook). We will only provide a short breakdown of the composer features here.
 
@@ -19,23 +19,4 @@ In case you already have a directory in mind, you can use this:
 npx @svelte-compose/storybook@latest --path ./your-project
 ```
 
-
-## Available options
-
-    
-- `useSass` (default: false) - Do you want to use sass? (css = faster, sass = better customization)
-- `addJavaScript` (default: false) - Do you want to add JavaScript (required for some components like dropdowns)?
-
-
-Option syntax
-```sh
-npx @svelte-compose/storybook@latest --key value
-```
-
-Specific example
-```sh
-npx @svelte-compose/storybook@latest --useSass false
-```
-
-You can combine as many options as you want. The usage of options is optional. If you don't specify an option value via the command line, the CLI will ask you the questions interactively.
-
+undefined
