@@ -16,6 +16,7 @@ export const composer = defineComposerConfig({
         },
     },
     options,
+    type: "inline",
     packages: [
         { name: "bootstrap", version: "^5.3.3", dev: true },
         { name: "@popperjs/core", version: "^2.11.8", dev: true, condition: ({ options }) => options.addJavaScript },

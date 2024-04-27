@@ -3,7 +3,7 @@ import { commonFilePaths, format, writeFile } from "../files/utils.js";
 import { detectOrCreateProject } from "../utils/create-project.js";
 import { createOrUpdateFiles } from "../files/processors.js";
 import { getPackageJson } from "../utils/common.js";
-import { WorkspaceWithoutExplicitArgs, createEmptyWorkspace, populateWorkspaceDetails } from "../utils/workspace.js";
+import { Workspace, WorkspaceWithoutExplicitArgs, createEmptyWorkspace, populateWorkspaceDetails } from "../utils/workspace.js";
 import {
     OptionDefinition,
     askQuestionsAndAssignValuesToWorkspace,
@@ -13,13 +13,14 @@ import {
 import {
     ComposerCheckConfig,
     ComposerConfig,
-    ComposerConfigWithoutExplicitArgs,
+    InlineComposerConfig,
     PostInstallationCheck,
     PreInstallationCheck,
 } from "./config.js";
 import { OptionValues } from "commander";
 import { RemoteControlOptions } from "./remoteControl.js";
 import { suggestInstallingDependencies } from "../utils/dependencies.js";
+import { spawnSync } from "child_process";
 
 export async function executeComposer<Args extends OptionDefinition>(
     config: ComposerConfig<Args>,
@@ -51,13 +52,17 @@ export async function executeComposer<Args extends OptionDefinition>(
 
     const isInstall = true;
 
-    await installPackages(config, workspace);
-    await createOrUpdateFiles(config.files, workspace);
-    await runHooks(config, workspace, isInstall);
+    if (config.type == "inline") {
+        await installPackages(config, workspace);
+        await createOrUpdateFiles(config.files, workspace);
+        await runHooks(config, workspace, isInstall);
+        if (!remoteControlled) await suggestInstallingDependencies(workingDirectory);
+    } else {
+        console.log("Executing external command");
+        spawnSync("npx", config.command.split(" "), { stdio: "inherit", shell: true, cwd: workingDirectory });
+    }
 
     await runPostInstallationChecks(checks.postInstallation);
-
-    if (!remoteControlled) await suggestInstallingDependencies(workingDirectory);
 }
 
 export function determineWorkingDirectory(options: OptionValues) {
@@ -69,7 +74,7 @@ export function determineWorkingDirectory(options: OptionValues) {
     return cwd;
 }
 
-export async function installPackages(config: ComposerConfig<OptionDefinition>, workspace: WorkspaceWithoutExplicitArgs) {
+export async function installPackages(config: InlineComposerConfig<OptionDefinition>, workspace: WorkspaceWithoutExplicitArgs) {
     const content = await getPackageJson(workspace);
 
     for (const dependency of config.packages) {
@@ -96,7 +101,11 @@ export async function installPackages(config: ComposerConfig<OptionDefinition>, 
     await writeFile(workspace, commonFilePaths.packageJsonFilePath, packageText);
 }
 
-function runHooks(config: ComposerConfigWithoutExplicitArgs, workspace: WorkspaceWithoutExplicitArgs, isInstall: boolean) {
+function runHooks<Args extends OptionDefinition>(
+    config: InlineComposerConfig<Args>,
+    workspace: Workspace<Args>,
+    isInstall: boolean,
+) {
     if (isInstall && config.installHook) config.installHook(workspace);
     else if (!isInstall && config.uninstallHook) config.uninstallHook(workspace);
 }

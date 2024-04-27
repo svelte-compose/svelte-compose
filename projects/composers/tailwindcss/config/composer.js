@@ -16,6 +16,7 @@ export const composer = defineComposerConfig({
         },
     },
     options,
+    type: "inline",
     packages: [
         { name: "tailwindcss", version: "^3.4.1", dev: true },
         { name: "postcss", version: "^8.4.33", dev: true },
