@@ -1,5 +1,12 @@
 # @svelte-compose/tailwindcss
 
+## 0.2.6
+
+### Patch Changes
+
+- Updated dependencies [[`4d79fc926b3d85d8b145fdfb086f3b72030e5e92`](https://github.com/svelte-compose/svelte-compose/commit/4d79fc926b3d85d8b145fdfb086f3b72030e5e92)]:
+  - @svelte-compose/core@0.3.1
+
 ## 0.2.5
 
 ### Patch Changes
