@@ -40,7 +40,7 @@ export function expressionStatement(expression: AstKinds.ExpressionKind) {
     return statement;
 }
 
-export function addFromString(ast: AstTypes.BlockStatement, value: string) {
+export function addFromString(ast: AstTypes.BlockStatement | AstTypes.Program, value: string) {
     const program = parseScript(value);
 
     for (const childNode of program.body) {

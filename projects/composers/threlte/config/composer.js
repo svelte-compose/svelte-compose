@@ -16,6 +16,7 @@ export const composer = defineComposerConfig({
         },
     },
     options,
+    type: "inline",
     packages: [
         { name: "three", version: "^0.163.0", dev: false },
         { name: "@threlte/core", version: "^7.3.0", dev: false },

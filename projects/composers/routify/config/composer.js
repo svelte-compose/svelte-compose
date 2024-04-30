@@ -16,6 +16,7 @@ export const composer = defineComposerConfig({
         },
     },
     options,
+    type: "inline",
     packages: [{ name: "@roxi/routify", version: "next", dev: true }],
     files: [
         {

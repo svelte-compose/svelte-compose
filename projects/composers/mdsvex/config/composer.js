@@ -16,6 +16,7 @@ export const composer = defineComposerConfig({
         },
     },
     options,
+    type: "inline",
     packages: [{ name: "mdsvex", version: "^0.11.0", dev: true }],
     files: [
         {

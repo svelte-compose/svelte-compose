@@ -40,14 +40,25 @@ export type PackageDefinition<Args extends OptionDefinition> = {
     condition?: ConditionDefinition<Args>;
 };
 
-export type ComposerConfig<Args extends OptionDefinition> = {
+export type BaseComposerConfig<Args extends OptionDefinition> = {
     metadata: ComposerConfigMetadata;
     options: Args;
+};
+
+export type InlineComposerConfig<Args extends OptionDefinition> = BaseComposerConfig<Args> & {
+    type: "inline";
     packages: PackageDefinition<Args>[];
     files: FileTypes<Args>[];
     installHook?: (workspace: Workspace<Args>) => Promise<void>;
     uninstallHook?: (workspace: Workspace<Args>) => Promise<void>;
 };
+
+export type ExternalComposerConfig<Args extends OptionDefinition> = BaseComposerConfig<Args> & {
+    type: "external";
+    command: string;
+};
+
+export type ComposerConfig<Args extends OptionDefinition> = InlineComposerConfig<Args> | ExternalComposerConfig<Args>;
 
 export function defineComposerConfig<Args extends OptionDefinition>(config: ComposerConfig<Args>) {
     return config;

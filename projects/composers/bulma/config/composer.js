@@ -16,6 +16,7 @@ export const composer = defineComposerConfig({
         },
     },
     options,
+    type: "inline",
     packages: [
         { name: "bulma", version: "^1.0.0", dev: true },
         { name: "sass", version: "^1.71.1", dev: true, condition: ({ options }) => options.useSass },
