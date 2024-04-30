@@ -1,5 +1,21 @@
 # @svelte-compose/cli
 
+## 2.1.1
+
+### Patch Changes
+
+- add storybook ([#21](https://github.com/svelte-compose/svelte-compose/pull/21))
+
+- Updated dependencies [[`4d79fc926b3d85d8b145fdfb086f3b72030e5e92`](https://github.com/svelte-compose/svelte-compose/commit/4d79fc926b3d85d8b145fdfb086f3b72030e5e92), [`4d79fc926b3d85d8b145fdfb086f3b72030e5e92`](https://github.com/svelte-compose/svelte-compose/commit/4d79fc926b3d85d8b145fdfb086f3b72030e5e92), [`4d79fc926b3d85d8b145fdfb086f3b72030e5e92`](https://github.com/svelte-compose/svelte-compose/commit/4d79fc926b3d85d8b145fdfb086f3b72030e5e92)]:
+  - @svelte-compose/cli@2.1.1
+  - @svelte-compose/core@0.3.1
+  - @svelte-compose/threlte@0.0.6
+  - @svelte-compose/bootstrap@0.1.6
+  - @svelte-compose/bulma@0.2.6
+  - @svelte-compose/mdsvex@0.3.6
+  - @svelte-compose/routify@0.2.6
+  - @svelte-compose/tailwindcss@0.2.6
+
 ## 2.1.0
 
 ### Minor Changes

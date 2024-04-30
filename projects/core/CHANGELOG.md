@@ -1,5 +1,11 @@
 # @svelte-compose/core
 
+## 0.3.1
+
+### Patch Changes
+
+- Add ability to define external composers ([#21](https://github.com/svelte-compose/svelte-compose/pull/21))
+
 ## 0.3.0
 
 ### Minor Changes
