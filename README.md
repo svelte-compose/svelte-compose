@@ -1,5 +1,7 @@
 # svelte-compose
 
+> ⚠️ Moved to [svelte-add](https://github.com/svelte-add/svelte-add/)
+
 `svelte-compose` is a tool to add many different tools to your svelte/kit project.
 
 This is a monorepo, containing the following packages:
